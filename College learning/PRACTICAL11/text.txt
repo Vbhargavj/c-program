@@ -1,0 +1,5 @@
+then, while defining area_circle( ) function later in the 
+program, care should be taken to make it capable of 
+returning a floating-point value. Note that unless otherwise 
+mentioned, the compiler would assume that this function 
+returns a value of the type int

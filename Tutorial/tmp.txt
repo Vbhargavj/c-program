@@ -1,0 +1,5 @@
+1. Which of the following is not a computer bus?
+a.data bus
+b.timer bus
+c.control bus
+d.address bus

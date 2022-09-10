@@ -1,0 +1,209 @@
+1. Which of the following is not a computer bus?
+a.data bus
+b.timer bus
+c.control bus
+d.address bus
+Answer: timer bus
+
+2. Which of the following is not an input device?
+a.Mouse
+b.Light pen
+c.VDU
+d.Keyboard
+Answer:  VDU
+
+3. Web pages are written using ?
+a.HTML
+b.FTP
+c.HTTP
+d.URL
+Answer: HTML
+
+4. Which of the following is used to Manage Data Base?
+a.DBMS
+b.Compiler
+c.Operating System
+d.None of the above
+Answer: DBMS
+
+5. IC chips used in computers are usually made of________
+a.Chromium
+b.Lead
+c.Gold
+d.Silicon
+Answer: Silicon
+
+6. a ______ is an electronic device that process data, converting it into information.
+a.processor
+b.case
+c.computer
+d.stylus
+Answer: computer
+
+7. a hardware device that converts data to full information?
+a.input device
+b.processor
+c.Protector
+d.Program
+Answer: processor
+
+8. bit stands for______
+a.Bivariate Theory
+b.binary digit
+c.binary information term
+d.binary tree
+Answer: binary digit
+
+9.  Who is the inventor of computer?
+a.von Neumann
+b.Charles Babbage
+c.JS Kilby
+d.None of these
+Answer: Charles Babbage
+
+10. How many bits are used in the data bus?
+a.7
+b.8
+c.9
+d.12
+Answer: 8
+
+11. Which of these HTML editors was a part of MS Office 2003?
+a.SharePoint Designer
+b.Microsoft FrontPage
+c.Notepad++
+d.Dreamweaver
+Answer: Microsoft FrontPage
+
+12. Which of the following is an example of non-volatile memory?
+a.ROM
+b.RAM
+c.Cache memory
+d.None of the above
+Answer:  ROM
+
+13. How to insert current time in a cell in MS Excel?
+a.Ctrl + Shift + T
+b.Ctrl + Shift + /
+c.Ctrl + Shift + :
+d.Ctrl + Shift + ?
+Answer: Ctrl + Shift + :
+
+14. What is Ctrl + R used for in MS Word?
+a.it reprints the document
+b.it reopens the last closed document
+c.it removes the formatting
+d.it right-aligns the selected text
+Answer: it right-aligns the selected text
+
+15.  Which is the correct formula for SUM function in MS Excel.
+a.=SUM (A1 – A5)
+b.+SUM (A1:A5)
+c.=SUM (A1:A5)
+d./SUM (A1+A5)
+Answer: =SUM (A1:A5)
+
+16. alerts are mostly appear in _____
+a.Combo box
+b.Check box
+c.Dialog box
+d.None of the above
+Answer: Dialog box
+
+17. File extensions are used in order to _________
+a.Identify the file type
+b.Ensure the filename is not lost
+c.Identify the file
+d.Name the file
+Answer: Identify the file type
+
+18. Who invented the first email program?
+a.ajay Bhatt
+b.Ray Tomlinson
+c.Tim Berners-Lee
+d.Dav Moron
+Answer: Ray Tomlinson
+
+19. What is the full form of W3C?
+a.World Wide Web Command
+b.World Wide Web Center
+c.World Wide Web Consortium
+d.World Wide Web Company
+Answer: World Wide Web Consortium
+
+20. What is the size of currency datatype?
+a.8 bytes
+b.2 bytes
+c.6 bytes
+d.4 bytes
+Answer: 8 bytes
+
+21. What is HTTP 404?
+a.an error message indicating server not found
+b.an error message indicating forbidden
+c.an error message indicating server found
+d.an error message indicating moved permanently
+Answer: An error message indicating server not found
+
+22. The two ways to arrange multiple windows on the desktop is______
+a.cascade and tile
+b.drag and drop
+c.point and click
+d.minimize and maximize
+Answer:  cascade and tile
+
+23. How many pins are present in VGA Cable?
+a.15
+b.100
+c.70
+d.10
+Answer: 15
+
+24. Which of the following is a programming language for creating special programs like applets?
+a.java
+b.Dot Net
+c.PHP
+d.C
+Answer: Java
+
+25. What is the other name for addictive manufacturing?
+a.CPU assembly
+b.3-D printing
+c.Memory management
+d.2-D printing
+Answer: 3-D printing
+
+26. Worldwide web was proposed by:
+a.Bill Rogers
+b.Bill Gates
+c.Tim Berners Lee
+d.None of the above
+Answer: Tim Berners Lee
+
+27. Storage mapping is done by
+a.Compiler
+b.Linker
+c.Operating system
+d.Loader
+Answer: Compiler
+
+28. What is the maximum limit of free cloud storage on Google drive?
+a.20 GB
+b.15 GB
+c.10 GB
+d.12 GB
+Answer: 15 GB
+
+29. Which one of the following is not an Internet Service Provider (ISP)?
+a.Infotech India Ltd.
+b.ERNET India
+c.BSNL
+d.MTNL
+Answer: Infotech India Ltd.
+
+30. Which of the following Organization was Introduced JAVA?
+a.IBM
+b.Sun Microsystem
+c.Intel
+d.Microsoft
+Answer: Sun Microsystem

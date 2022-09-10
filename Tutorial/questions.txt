@@ -1,0 +1,66 @@
+
+1. Which of the following is not a computer bus?
+a.data bus
+b.timer bus
+c.control bus
+d.address bus
+2. Which of the following is not an input device?
+a.Mouse
+b.Light pen
+c.VDU
+d.Keyboard
+3. Web pages are written using ?
+a.HTML
+b.FTP
+c.HTTP
+d.URL
+4. Which of the following is used to Manage Data Base?
+a.DBMS
+b.Compiler
+c.Operating System
+d.None of the above
+5. IC chips used in computers are usually made of________
+a.Chromium
+b.Lead
+c.Gold
+d.Silicon
+6. a ______ is an electronic device that process data, converting it into information.
+a.processor
+b.case
+c.computer
+d.stylus
+7. a hardware device that converts data to full information?
+a.input device
+b.processor
+c.Protector
+d.Program
+8. bit stands for______
+a.Bivariate Theory
+b.binary digit
+c.binary information term
+d.binary tree
+9.  Who is the inventor of computer?
+a.von Neumann
+b.Charles Babbage
+c.JS Kilby
+d.None of these
+10. How many bits are used in the data bus?
+a.seven
+b.eight
+c.nine
+d.twelve
+11. Which of these HTML editors was a part of MS Office 2003?
+a.SharePoint Designer
+b.Microsoft FrontPage
+c.Notepad++
+d.Dreamweaver
+12. Which of the following is an example of non-volatile memory?
+a.ROM
+b.RAM
+c.Cache memory
+d.None of the above
+13. How to insert current time in a cell in MS Excel?
+a.Ctrl + Shift + T
+b.Ctrl + Shift + /
+c.Ctrl + Shift + :
+d.Ctrl + Shift + ?

@@ -1,0 +1,6 @@
+
+3. Web pages are written using ?
+a.HTML
+b.FTP
+c.HTTP
+d.URL
