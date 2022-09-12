@@ -43,7 +43,7 @@ int main()
 {
     int n;
     scanf("%d", &n);
-    int ARY ={12
+    int ARY ;
 
     for (int i = 0; i < n; i++)
     {
@@ -52,15 +52,15 @@ int main()
         scanf("%d", &b);
 
         a = a + b;
-        int r,sum=0,m;
+        int r, sum = 0, m;
 
         for (int i = 0; a != 0; a = a / 10)
         {
             r = a % 10;
-            m=rem(r);
-            sum=sum+m;
+            m = rem(r);
+            sum = sum + m;
         }
-        printf("%d\n",sum);
+        printf("%d\n", sum);
     }
 
     return 0;
