@@ -3,6 +3,8 @@
         "stdio.h": "c",
         "cmath": "c",
         "*.tcc": "c",
-        "1.C": "cpp"
-    }
+        "1.C": "cpp",
+        "math.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

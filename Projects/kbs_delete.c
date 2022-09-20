@@ -3,7 +3,7 @@ int main()
 {
         char *inFileName = "test.txt";
         char *outFileName = "tmp.txt";
-        FILE *inFile = fopen(inFileName, "r");
+        FILE *inFile = fopen(inFileName, "r");  
         FILE *outFile = fopen(outFileName, "w+");
         char line[1024]; // maybe you have to user better value here
         int lineCount = 0;
