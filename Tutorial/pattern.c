@@ -3,20 +3,12 @@
 
 int main()
 {
-
     int row;
-
     printf("Enter the odd row");
     scanf("%d", &row);
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < row; j++)
-
-
-
-
-
-        
         {
             if (i == j)
             {
