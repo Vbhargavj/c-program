@@ -11,7 +11,7 @@ void print(struct test *);
 int main()
 {
 
-    struct test t1[];
+    struct test t1[1];
     scaner(t1);
     print(t1);
 

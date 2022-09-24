@@ -16,7 +16,7 @@ int main()
     printf("\033[0;34m");
     // for Blue colour
     printf("\n\nTHE MERIT MARKS OF THE STUDENTS DISPLAY BELOW**\n\n");
-    ptr = fopen("file of pr02.txt", "r");
+    ptr = fopen("pr02.txt", "r");
     fread(m, sizeof(int), 100, ptr);
     for (int i = 0; i < 100; i++)
     {

@@ -1,28 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-
-    FILE *fp=NULL;
-
-    fp=fopen("D:\\coding\\code program\\c program\\Projects\\record.txt","r");
-
-    if(fp ==NULL){
-        printf("error openingfile\n");
-        exit(1);
-    }
-char str[50];
-char ch;
-//gets(str);
-//rewind(fp);
-
-while(!feof(fp))
+struct student
 {
-  ch = fgetc(fp);
-  // ch=fgetc(fp);
-   printf("%c",ch);
-}
-//fputs("arun",fp);
-fclose(fp);
-return 0;
+    char name[30];
+    float percentage;
+
+} stu1, stu2;
+
+int main()
+{
+    FILE *fp = NULL;
+    int i, n;
+    fp = fopen("ak.txt", "r");
+    // printf("enter the number of data : ");
+    // scanf("%d", &n);
+    
+    //  for (i = 0; i <= n; i++)
+    // {
+    //     printf("enter name : ");
+    //     scanf("%s", stu1.name);
+    //     printf("\nenter percentage : "); 
+    //     scanf("%f", &(stu1.percentage));
+    //     fprintf(fp," name : %s\n percentage : %f\n\n", stu1.name, stu1.percentage);
+    // }
+ printf("name\tpercentage\n\n");
+ while(fscanf(fp,"%s%f",&stu1.name,stu1.percentage) != EOF) printf("%s\t%f",stu1.name,stu1.percentage);
+    fclose(fp);
 }

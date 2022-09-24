@@ -3,8 +3,7 @@
 
 int main(){
 
-    char bhargav[5][30],cop;
-    
+    char bhargav[5][30],cop;+
     
     for (int i = 0; i <5; i++)
     {
