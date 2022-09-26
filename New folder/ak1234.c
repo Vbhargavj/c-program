@@ -11,6 +11,7 @@ void update();
 void exitp();
 void user();
 void search();
+void shor();
 
 int i = 0;
 struct student
@@ -83,7 +84,7 @@ void user()
 void add()
 {
     set();
-    FILE *f = fopen("view.txt", "a");
+    FILE *f = fopen("ak1.txt", "a");
     printf("\nEnter student name : ");
     fflush(stdin);
     scanf("%[^\n]", std[i].name);
@@ -160,7 +161,7 @@ void search()
 // this function required to set the function
 void clear()
 {
-    FILE *f = fopen("view.txt", "w");
+    FILE *f = fopen("ak1.txt", "w");
 }
 
 // this function is use to set our panel
@@ -169,7 +170,7 @@ void set()
 {
     clear();
     char se[] = "  STUDENT NAME    |  ENROLLMENT NUMBER  | MOBILE NUMBER | CPI | BRANCH";
-    FILE *f = fopen("view.txt", "a");
+    FILE *f = fopen("ak1.txt", "a");
     fprintf(f, "%s\n", se);
 }
 
@@ -248,4 +249,19 @@ void delet()
 void exitp()
 {
     exit(0);
+}
+void shor(){
+    for (int l = 0; l < 5; l++)
+    {
+        for (int t = l+1; t < 5; t++)
+        {
+            if (std[l].cpi < std[t].cpi)
+            {
+                                
+            }
+            
+        }
+        
+    }
+    
 }

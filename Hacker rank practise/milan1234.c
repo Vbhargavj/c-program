@@ -16,13 +16,12 @@ void menu();
 void add();
 void view();
 void search();
-void edit(){
-
-}
-void sort(){
-
-}
-
+void edit();
+void sort();
+struct student detail;
+// void display();
+// void set();
+// void clear();
 int main()
 {
     printf("NAME:PATEL MILANKUMAR DIPAKBHAI    ENROLLMENT NO:210210116052");
@@ -69,43 +68,86 @@ void menu()
     default:
         printf("INVALID CHOICE");
     }
-}
+    }
+// }void display()
+// {
+//     printf("\n\t-.-.-.Select option to perform an operation.-.-.-.-\n");
+//     printf("\t\t\t1 : VIEW \n");
+//     printf("\t\t\t2 : ADD \n");
+//     printf("\t\t\t3 : UPDATE \n");
+//     printf("\t\t\t4 : DELETE \n");
+//     printf("\t\t\t5 : SEARCH \n");
+//     printf("\t\t\t6 : EXIT \n");
+//     user();
+// }void set()
+// {
+//     clear();
+//     char se[] = "  STUDENT NAME    |  ENROLLMENT NUMBER  | MOBILE NUMBER | CPI | BRANCH";
+//     FILE *fp = fopen("studentinfo.txt", "a");
+//     fprintf(fp, "%s\n", se);
+// }void clear()
+// {
+//     FILE *fp= fopen("studentinfo.txt", "w");
+// }
 void add()
 {
+    // set();
+    // FILE *fp = fopen("studentinfo.txt", "a");
+    // printf("\nEnter student name : ");
+    // fflush(stdin);
+    // scanf("%[^\n]", detail.name);
+    // fprintf(fp, "%s  ", detail.name);
+    // printf("\nEnter student enrollment number : ");
+    // scanf("%lld", detail.enrollno);
+    // // (f, "%d  ", &std[i].eno);
+    // fprintf(fp, "%lld", detail.enrollno);
+
+    // printf("\nEnter student mobile number : ");
+    // scanf("%lld", detail.mobileno);
+    // fprintf(fp, " %lld  ", detail.mobileno);
+    // printf("Enter student cpi : ");
+    // scanf("%fp", detail.course);
+    // fprintf(fp, "%0.2f ", detail.course);
+    // printf("Enter student branch : ");
+    // scanf("%s", detail.branch);
+    // fprintf(fp, "%s ", detail.branch);
+    // i++;
+    // display();
     FILE *fp = fopen("studentinfo.txt", "w");
     int choice;
+    struct student detail;
     char name[200];
     int mobileno;
     int enrollno;
     char course[200];
     char branch[200];
-
+    
     
         printf("ENTER YOUR NAME:");
-        scanf("%s", name);
+        scanf("%s",&detail.name);
         fputs(name, fp);
         printf("\nENTER YOUR MOBILE NUMBER :");
-        scanf("%d", &mobileno);
-        // putw(mobileno, fp);
+        scanf("%d", &detail.mobileno);
         fprintf(fp, "%d", &mobileno);
+        // putw(mobileno, fp);
         // fputs(mobileno,fp);
         printf("\nENTER YOUR ENROLLMENT NUMBER:");
-        scanf("%d", &enrollno);
+        scanf("%d", &detail.enrollno);
         fprintf(fp, "%d", &enrollno);
         // putw(enrollno, fp);
         // fputs(enrollno,fp);
         printf("\nENTER YOUR COURSE :");
-        scanf("%S", course);
+        scanf("%S", &detail.course);
         fputs(course, fp);
         printf("\nENTER YOUR BRANCH :");
-        scanf("%s", branch);
+        scanf("%s", &detail.branch);
         fputs(branch, fp);
     //   printf("");
     fflush(stdin);
     
-    fclose(fp);
     fwrite(&choice, sizeof(choice), 1, fp);
     printf("\n\n\t\t\tENTER YOUR NEEDED CHOICE:");
+    fclose(fp);
     menu();
 }
 void view()
@@ -133,7 +175,7 @@ while(fread(&detail, sizeof(detail), 1, fp)==1){
     //     // printf("\nENTER YOUR ENROLLMENT NUMBER:  ");
          printf("%d", &detail.enrollno);
     //     printf("\nENTER YOUR COURSE :  ");
-        printf("%S", detail.course);
+        printf("%S", &detail.course);
     //     printf("\nEN&TER YOUR BRANCH :  ");
         printf("%s", &detail.branch);
     //             ch = getc(fp);
@@ -166,7 +208,7 @@ void search()
     while(fread(&detail, sizeof(detail), 1, fp) ){
     if (detail.name == name)
     {
-        found 1;
+        found =1;
         printf("%s", detail.name);
         printf("%d", &detail.mobileno);
 // printf("%d", &detail.enrollno);
@@ -175,72 +217,73 @@ void search()
     }
 }
 if(!found){
-printf("RECORD ERROR");
+printf("RECORD ERROR");}
 fclose(fp);
 }
-// void edit()
-// {
-// FILE *fp,*fp1;
-//     fp = fopen("mdpatel.txt", "r");
-//     fp1 = fopen("temp.txt", "r");
-//     struct student detail;
-//     char name[100];
-//     int found = 0;
+void edit(){
+{
+FILE *fp,*fp1;
+    fp = fopen("mdpatel.txt", "r");
+    fp1 = fopen("temp.txt", "r");
+    struct student detail;
+    char name[100];
+    int found = 0;
 
-//     printf(" SORT THE STUDENT DETEILS\n");
-//     printf(" ENTER NAME : ");
-//     scanf("%s", name);
-//     while(fread(&detail, sizeof(student), 1, fp) ){
-//     if (detail.name ==name)
-//     {
-//         found 1;
-//           }
-//           else{
-//          fwrite(&detail,sizeof(student), 1, fp1);}
+    printf(" SORT THE STUDENT DETEILS\n");
+    printf(" ENTER NAME : ");
+    scanf("%s", name);
+    while(fread(&detail, sizeof(detail), 1, fp) ){
+    if (detail.name ==name)
+    {
+        found =1;
+          }
+          else{
+         fwrite(&detail,sizeof(detail), 1, fp1);}
+    }
 // }fclose(fp);
 // fclose(fp1);
-// if(found){
-//  fp1= fopen("temp.txt", "r");
-//  fp= fopen("mdpatel.txt", "r");
+if(found){
+ fp1= fopen("temp.txt", "r");
+ fp= fopen("mdpatel.txt", "r");
 
-//  while(fread(&detail, sizeof(student), 1, fp) );
-//  fwrite(&detail,sizeof(student), 1, fp);
-// }
-// else{
-// printf("ERROR RECORD");
-// }fclose(fp);
-// fclose(fp1);
+ while(fread(&detail, sizeof(detail), 1, fp) );
+ fwrite(&detail,sizeof(detail), 1, fp);
+}
+else{
+printf("ERROR RECORD");
+}fclose(fp);
+fclose(fp1);
 
-// }
-// void sort()
-// {
-//     FILE *fp;
-// //     fp = fopen("mdpatel.txt", "r");
-// //     fp1 = fopen("temp.txt", "r");
-// //     struct student detail;
-// //     char name[100];
-// //     int found = 0;
+}}
+void sort()
+{
+    FILE *fp,*fp1;
+    fp = fopen("mdpatel.txt", "r");
+    fp1 = fopen("temp.txt", "r");
+    struct student detail;
+    char name[100];
+    int found = 0;
 
-// //     printf("SORT THE STUDENT DETEILS\n");
-// //     printf(" ENTER NAME : ");
-// //     scanf("%s", name);
-// //     while(fread(&detail, sizeof(student), 1, fp) ){
-// //     if (detail.name ==name)
-// //     {
-// //         found 1;
+    printf("SORT THE STUDENT DETEILS\n");
+    printf(" ENTER NAME : ");
+    scanf("%s", name);
+    while(fread(&detail, sizeof(detail), 1, fp) ){
+    if (detail.name ==name)
+    {
+        found= 1;
 
-// //     }else{
-// //     fwrite(&detail,sizeof(student), 1, fp1);}
+    }else{
+    fwrite(&detail,sizeof(detail), 1, fp1);}
 
-// // fclose(fp);
-// // fclose(fp1);
-// // if(found){
-// //  fp1= fopen("temp.txt", "r");
-// //  fp= fopen("mdpatel.txt", "r");
+fclose(fp);
+fclose(fp1);
+if(found){
+ fp1= fopen("temp.txt", "r");
+ fp= fopen("mdpatel.txt", "r");
 
-// //  while(fread(&detail, sizeof(student), 1, fp1) ){
-// //  fwrite(&detail,sizeof(student), 1, fp);
-// // }
-// // }fclose(fp);
-// // fclose(fp1);
-// // }
+ while(fread(&detail, sizeof(detail), 1, fp1) ){
+ fwrite(&detail,sizeof(detail), 1, fp);
+}
+}fclose(fp);
+fclose(fp1);
+}}

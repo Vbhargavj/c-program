@@ -11,6 +11,7 @@ void update();
 void exi();
 void user();
 void search();
+void shor();
 
 int i = 0;
 struct student
@@ -22,7 +23,7 @@ struct student
     float cpi;
 };
 
-struct student std[5];
+struct student std[5],tmp;
 
 int main()
 {
@@ -100,22 +101,24 @@ void add()
 }
 void view()
 {
-    if(i==0){
+    if (i == 0)
+    {
         printf("\t\t\nFile is empty\n");
     }
-    else{
-
-    for (int l = 0; l < i; l++)
+    else
     {
-        printf("Student ENROLLMENT number: %lld\n", std[l].eno);
-        printf("Student name : %s\n", std[l].name);
-        printf("Student CPI : %f\n", std[l].cpi);
-        printf("Student mobile number : %lld\n", std[l].mno);
-        printf("Student BRANCH : %s\n", std[l].branch);
+
+        for (int l = 0; l < i; l++)
+        {
+            printf("Student ENROLLMENT number: %lld\n", std[l].eno);
+            printf("Student name : %s\n", std[l].name);
+            printf("Student CPI : %f\n", std[l].cpi);
+            printf("Student mobile number : %lld\n", std[l].mno);
+            printf("Student BRANCH : %s\n", std[l].branch);
+        }
     }
     display();
 }
-    }
 // this function is use to search student with name
 void search()
 {
@@ -240,3 +243,14 @@ void exi()
     // goto exit;
     exit(0);
 }
+// void shor(){
+//     for (int t = 0; t <5; t++)
+//     {
+//         for (int l = 0; l < 5; l++)
+//         {
+            
+//         }
+        
+//     }
+    
+// }
