@@ -17,7 +17,7 @@ void view()
 }
 void set(){
     char se[]="STUDENT NAME | ENROLLMENT NUMBER | MOBILE NUMBER | CPI | BRANCH";
-    FILE *f = fopen("view.txt", "W");
+    FILE *f = fopen("vw.txt", "W");
     fprintf(f, "%s\n", se);   
 }
 

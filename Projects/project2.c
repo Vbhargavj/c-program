@@ -5,14 +5,20 @@
 int main()
 {
 
-    char s[5][25], s1[25];  //this array take input from user
-    // this is our counter
-    int i, j;
+    char **ptr, s1[25]; // this array take input from user
+                        // this is our counter
+
+    char **s;
+    s = (char **)malloc(sizeof(char *) * 5);
+    for (int i = 0; i < 5; i++)
+    {
+        s[i] = (char *)malloc(sizeof(char) * 25);
+    }
     printf("\n.......Enter the city name......\n");
     // this loop is take input from user
-    for (i = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
-        scanf("%s", &(*(s + i)));
+        scanf("%s", s[i]);
     }
 
     printf("\n._._._.These are city name enter by user._._._.\n");
@@ -20,7 +26,7 @@ int main()
     // this loop is print input given by user
     for (int i = 0; i < 5; i++)
     {
-        for (j = 0; j < strlen(s[i]); j++)
+        for (int j = 0; j < strlen(s[i]); j++)
         {
             printf("%c", *(*(s + i) + j));
         }
@@ -40,7 +46,7 @@ int main()
             }
         }
     }
-    
+
     printf("\n!_!_!_These are name is alphabaticaly_!_!_!\n");
     // this loop is print short array
     for (int i = 0; i < 5; i++)
