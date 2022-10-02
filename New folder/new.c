@@ -1,35 +1,18 @@
 #include <stdio.h>
-struct student
-{
-    int  no;
-    char na[10];
-};
-struct student std[3];
 
 int main()
 {
 
-    for (int i = 0; i < 3; i++)
+    remove("filesave.txt");
+     int re = rename("temp.txt", "filesave.txt");
+    if (re == 0)
     {
-        scanf("%d", &std[i].no);
-        scanf("%s", std[i].na);
+        printf("yes");
     }
-    for (int j = 0; j <= 3; j++)
+    else
     {
-        if (std[i].no == std[j].no)
-        {
-            for (int k = j; k < 3; k++)
-            {
-                std[k] = std[k + 1];
-            }
-        }
+        printf("no");
     }
-      for (int i = 0; i < 3; i++)
-    {
-        printf("%d", std[i].no);
-        printf("%s", std[i].na);
-    }
+
     return 0;
 }
-
- 

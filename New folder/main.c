@@ -77,7 +77,7 @@ void user()
 void add()
 {
     set();
-    FILE *f = fopen("view.txt", "a");
+    FILE *f = fopen("view.bin", "wb");
     printf("\nEnter student name : ");
     fflush(stdin);
     scanf("%[^\n]", std[i].name);
@@ -153,7 +153,7 @@ void search()
 // this function required to set the function
 void clear()
 {
-    FILE *f = fopen("view.txt", "w");
+    // FILE *f = fopen("view.txt", "w");
 }
 
 // this function is use to set our panel

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void renam();
+void renam1();
 void empty();
 void user();
 void add();
@@ -30,6 +30,8 @@ int main()
 
 void display()
 {
+    fflush(stdin);
+    fflush(stdout);
     printf("\n\t-.-.-.Select option to perform an operation.-.-.-.-\n");
     printf("\t\t\t1 : VIEW \n");
     printf("\t\t\t2 : ADD \n");
@@ -57,6 +59,8 @@ void user()
         break;
     case 4:
         delet();
+
+        // renam();
         break;
     case 5:
         search();
@@ -67,6 +71,8 @@ void user()
     case 7:
         // shor();
         break;
+    case 8:
+        // renam();
     default:
         printf("Unknown command\n");
         display();
@@ -101,6 +107,7 @@ void filesave()
     FILE *f = fopen("filesave.txt", "a");
     fprintf(f, "%s %lld %lld %s %0.2f\n", std[i].name, std[i].eno, std[i].mo, std[i].branch, std[i].cpi);
     printf("DATA SUCESSFULLY STORE IN FILE \n");
+    fclose(f);
 }
 void exi()
 {
@@ -126,27 +133,10 @@ void view()
     {
         printf("file is empty\n");
     }
+    fclose(fp);
+    fflush(stdin);
     display();
-
-    // liveview();
 }
-// void liveview()
-// {
-//     for (int j = 0; j < i; j++)
-//     {
-//         flag = 1;
-//         printf("%s %lld %lld %s %0.2f\n", std[j].name, std[j].eno, std[j].mo, std[j].branch, std[j].cpi);
-//     }
-//     empty();
-// }
-// void empty()
-// {
-//     if (flag == 0)
-//     {
-//         printf("ohh...Data not found\n ");
-//     }
-//     display();
-// }
 // this function is use to search student in file and current structure
 long long int buf;
 void search()
@@ -182,10 +172,12 @@ void search()
     {
         printf("Data was not found in the record\n");
     }
+    fclose(fp);
     display();
 }
 void delet()
 {
+    fflush(stdout);
     printf("Enter the enrollment number of student to delete\n");
     scanf("%lld", &buf);
     FILE *fp = fopen("filesave.txt", "r");
@@ -199,6 +191,7 @@ void delet()
     {
         if (buf == temp.eno)
         {
+            printf("\nyes\n");
         }
         else
         {
@@ -208,28 +201,27 @@ void delet()
             fprintf(f, "%s %lld %lld %s %f\n", temp.name, temp.eno, temp.mo, temp.branch, temp.cpi);
         }
     }
-    // this loop is use to search student in current structure
-    // for (int j = 0; j < i; j++)
-    // {
-    //     if (buf == std[j].eno)
-    //     {
-    //         sflag = 1;
-    //         printf("%s %lld %lld %s %0.2f\n", std[j].name, std[j].eno, std[j].mo, std[j].branch, std[j].cpi);
-    //     }
-    // }
+
     // when data not found in file and structure below code execute
+    fclose(fp);
+    fclose(f);
+    renam1();
     if (sflag == 0)
     {
         printf("Data was not found in the record\n");
+        // renam();
+        display();
     }
     else
     {
-        renam();
+        // renam();
+        display();
     }
-    display();
 }
-void renam()
+void renam1()
 {
-    int result = rename("temp.txt", "filesave.txt");
-    int re = remove("temp.txt");
+
+    remove("filesave.txt");
+    printf("\nYes i am calling now\n");
+    rename("temp.txt", "filesave.txt");
 }

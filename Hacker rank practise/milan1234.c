@@ -115,7 +115,7 @@ void add()
     // display();
     FILE *fp = fopen("studentinfo.txt", "w");
     int choice;
-    struct student detail;
+    // struct student detail;
     char name[200];
     int mobileno;
     int enrollno;
@@ -145,9 +145,9 @@ void add()
     //   printf("");
     fflush(stdin);
     
+    fclose(fp);
     fwrite(&choice, sizeof(choice), 1, fp);
     printf("\n\n\t\t\tENTER YOUR NEEDED CHOICE:");
-    fclose(fp);
     menu();
 }
 void view()
@@ -202,7 +202,7 @@ void search()
     char name[100];
     int found = 0;
 
-    printf("Searching students...");
+    printf("\nSearching students...");
     printf(" ENTER NAME : ");
     scanf("%s", name);
     while(fread(&detail, sizeof(detail), 1, fp) ){
