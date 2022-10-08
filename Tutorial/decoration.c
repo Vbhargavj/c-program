@@ -13,6 +13,7 @@ int main()
         sleep(1);
         printf("\n");
     }
+    // how to short array in c ?
     system("cls");
 
     return 0;

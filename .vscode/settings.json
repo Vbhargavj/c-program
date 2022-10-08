@@ -4,7 +4,10 @@
         "cmath": "c",
         "*.tcc": "c",
         "1.C": "cpp",
-        "math.h": "c"
+        "math.h": "c",
+        "DSA_01 INSERTION.C": "cpp",
+        "DSA 01 INSERTION.C": "cpp",
+        "DSA_01_INSERTION.C": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "sqltools.connections": [

@@ -1,4 +1,6 @@
 #include <stdio.h>
+
+
 void display(int ary[], int n)
 {
     for (int i = 0; i < n; i++)
@@ -30,4 +32,4 @@ int main()
     display(ary, 6);
 
     return 0;
-}
+}  

@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 void display(int ary[], int n)
 {
     for (int i = 0; i < n; i++)
@@ -15,3 +16,4 @@ int main()
 
     return 0;
 }
+

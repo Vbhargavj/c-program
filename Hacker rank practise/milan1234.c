@@ -8,8 +8,8 @@ struct student
     char name[100];
     int mobileno[10];
     int enrollno;
-    char course[20];
-    char branch[20];
+    char course[200];
+    char branch[200];
 };
 
 void menu();
@@ -18,9 +18,9 @@ void view();
 void search();
 void edit();
 void sort();
-struct student detail;
 // void display();
 // void set();
+struct student detail;
 // void clear();
 int main()
 {
@@ -113,11 +113,11 @@ void add()
     // fprintf(fp, "%s ", detail.branch);
     // i++;
     // display();
-    FILE *fp = fopen("studentinfo.txt", "w");
+    FILE *fp = fopen("D:\\coding\\code program\\c program\\Hacker rank practise\\studentinfo.txt", "w");
     int choice;
-    // struct student detail;
+    struct student detail;
     char name[200];
-    int mobileno;
+    int mobileno[10];
     int enrollno;
     char course[200];
     char branch[200];
@@ -125,7 +125,7 @@ void add()
     
         printf("ENTER YOUR NAME:");
         scanf("%s",&detail.name);
-        fputs(name, fp);
+        fputc(name, fp);
         printf("\nENTER YOUR MOBILE NUMBER :");
         scanf("%d", &detail.mobileno);
         fprintf(fp, "%d", &mobileno);
@@ -138,21 +138,22 @@ void add()
         // fputs(enrollno,fp);
         printf("\nENTER YOUR COURSE :");
         scanf("%S", &detail.course);
-        fputs(course, fp);
+        fputc(course, fp);
         printf("\nENTER YOUR BRANCH :");
         scanf("%s", &detail.branch);
-        fputs(branch, fp);
+        fputc(branch, fp);
     //   printf("");
-    fflush(stdin);
+    // fflush(stdin);
     
     fclose(fp);
-    fwrite(&choice, sizeof(choice), 1, fp);
+    // fwrite(&choice, sizeof(choice), 1, fp);
     printf("\n\n\t\t\tENTER YOUR NEEDED CHOICE:");
     menu();
 }
 void view()
 {
     FILE *fp;
+    printf("Hello");
     system("cls");
     // char ch;
     struct student detail;
