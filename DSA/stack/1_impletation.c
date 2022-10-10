@@ -1,32 +1,14 @@
-// #include<stdio.h>
-// float feh(float feh);
-//
-// int main()
-// {
-//     float cel=5;
-//
-//     printf("%f\n",feh(cel));
-//     // printf("%f",9/5.);
-//     // printf("%f\n",5.0/9.0);
-//
-//
-//     return 0;
-// }
-// float feh(float cel){
-//     float fer=cel*9/5+32;
-//     return fer;
-// }
 #include <stdio.h>
 #include <stdlib.h>
 
-struct stack
+struct stacke
 {
     int size;
     int top;
     int *arr;
 };
 
-int isEmpty(struct stack *ptr)
+int isEmpty(struct stacke *ptr)
 {
     if (ptr->top == -1)
     {
@@ -38,7 +20,7 @@ int isEmpty(struct stack *ptr)
     }
 }
 
-int isFull(struct stack *ptr)
+int isFull(struct stacke *ptr)
 {
     if (ptr->top == ptr->size - 1)
     {
@@ -54,21 +36,22 @@ int main()
 {
     // struct stack s;
     // s.size = 80;
-    // s.top = -1;
+    // s.top = -1;.
     // s.arr = (int *) malloc(s.size * sizeof(int));
 
-    struct stack *s;
+    struct stacke *s = (struct stacke *)malloc(s->size * sizeof(struct stacke));
     s->size = 80;
     s->top = -1;
     s->arr = (int *)malloc(s->size * sizeof(int));
-
+    int d = isFull(s);
+    printf("%d\n", d);
     if (isEmpty(s))
     {
-        printf("Empty not stack\n");
+        printf("Empty  stack\n");
     }
     else
     {
-        printf("Empty stack\n");
+        printf("Not empty stack\n");
     }
     return 0;
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct linkedlist
 {
     int data;
@@ -7,7 +8,7 @@ struct linkedlist
 };
 void display(struct linkedlist *ptr)
 {
-    printf("Display is running\n");
+    // printf("Display is running\n");
     while (ptr != NULL)
     {
         printf("element : %d ", ptr->data);
@@ -24,6 +25,29 @@ struct linkedlist *delete_at_first(struct linkedlist *ptr)
     free(p);
     return ptr;
 }
+void delete_btw(struct linkedlist *ptr, int index)
+{
+    for (int i = 1; i < index; i++)
+    {
+        ptr = ptr->next;
+    }
+    struct linkedlist *p;
+    p = ptr->next;
+    ptr->next = p->next;
+    free(p);
+}
+void delete_at_last(struct linkedlist *ptr)
+{
+    struct linkedlist *p = ptr;
+    struct linkedlist *q = ptr->next;
+    while (q->next != NULL)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    p->next = NULL;
+    free(q);
+}
 int main()
 {
     struct linkedlist *first;
@@ -39,7 +63,10 @@ int main()
     third->data = 4;
     third->next = NULL;
     display(first);
-    first=delete_at_first(first);
+    // first = delete_at_first(first);
+    printf("after delete\n");
+    // delete_btw(first, 2);
+    delete_at_last(first);
     display(first);
     return 0;
 }
