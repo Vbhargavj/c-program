@@ -31,11 +31,13 @@ int check(char c)
 
 void display(struct stack *ptr)
 {
-    for (int i = 0; ptr->top != -1; i--)
+    int p = ptr->top;
+    for (int i = 0; i <= p; i++)
     {
         printf("%c\n", ptr->arr[i]);
     }
 }
+
 void intdisplay(struct stack *ptr)
 {
     for (int i = 0; ptr->top != -1; i--)
@@ -65,7 +67,7 @@ int op(char op, int b, int a)
         break;
 
     default:
-        printf("Please entervalid expresion\n");
+        printf("Please enter valid expresion\n");
         exit(1);
         break;
     }
@@ -76,7 +78,7 @@ char pop(struct stack *ptr)
 }
 int intpop(struct intstack *ptr)
 {
-    return ptr->arr[ptr->top--];
+    return ptr->arr[ptr->top--] + '0';
 }
 void push(struct stack *ptr, char c)
 {
@@ -95,20 +97,43 @@ int main()
     struct stack *postfix = (struct stack *)malloc(sizeof(struct stack));
     postfix->top = -1;
     postfix->size = 30;
-    postfix->arr=(char *)malloc((postfix->size)*sizeof(char);
+    postfix->arr = (char *)malloc(postfix->size * sizeof(char));
 
-    struct intstack *result= (struct intstack*)malloc(sizeof(struct intstack));
-    result->top=-1;
-    result->size=30;
-    result->arr=(int *)malloc((result->size)*sizeof(int));
-    char ex[30];
+    struct intstack *result = (struct intstack *)malloc(sizeof(struct intstack));
+    result->top = -1;
+    result->size = 30;
+    result->arr = (int *)malloc(result->size * sizeof(int));
+    char ex[30], c;
     printf("Enter the expresion\n");
-    scanf("%s",ex);
-    for (int i = 0; i < strlen(ex); i++)
+    scanf("%s", ex);
+    for (int i = strlen(ex) - 1; i >= 0; i--)
     {
         c = ex[i];
         push(postfix, c);
     }
- nb
+    int n, m, sum;
+    for (int i = 0; i < strlen(ex); i++)
+    {
+        c = pop(postfix);
+        printf("in loop%c\n", c);
+        if (check(c))
+        {
+            printf("in else %c\n", c);
+            intpush(result, c);
+        }
+        else
+        {
+            printf("in  if%c\n", c);
+            n = intpop(result);
+            m = intpop(result);
+            sum = op(c, n, m);
+            result->top++;
+            result->arr[result->top] = sum;
+        }
+    }
+
+    display(postfix);
+    printf("%d\n",sum=intpop(result));
+
     return 0;
 }

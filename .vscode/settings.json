@@ -7,7 +7,8 @@
         "math.h": "c",
         "DSA_01 INSERTION.C": "cpp",
         "DSA 01 INSERTION.C": "cpp",
-        "DSA_01_INSERTION.C": "cpp"
+        "DSA_01_INSERTION.C": "cpp",
+        "string.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "sqltools.connections": [

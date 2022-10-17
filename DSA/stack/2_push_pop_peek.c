@@ -6,6 +6,7 @@ struct stack
     int top;
     int *arr;
 };
+
 int isFull(struct stack *ptr)
 {
     if (ptr->top == ptr->size - 1)
@@ -59,16 +60,45 @@ void peek(struct stack *ptr, int index)
     else
         printf("not possible value in stack\n");
 }
-
+// index is starting 1 last element is index 1;
+void change(struct stack *ptr, int index, int value)
+{
+    struct stack *tmp;
+    tmp = (struct stack *)malloc(sizeof(struct stack));
+    tmp->arr = (int *)malloc(ptr->size * sizeof(int));
+    tmp->top = -1;
+    int d;
+    printf("YES");
+    for (int i = 1; i < index; i++)
+    {
+        d = pop(ptr);
+        push(tmp, d);
+        printf("%d", tmp->arr[i - 1]);
+    }
+    printf("Enter the value for change in index : %d\n", index);
+    scanf("%d", &d);
+    // printf("%d\n", tmp->arr[0]);
+    // printf("%d\n", tmp->arr[1]);
+    // printf("%d\n", tmp->arr[2]);
+    push(ptr, d);
+    // printf("%d\n", ptr->arr[0]);
+    // printf("%d\n", ptr->arr[1]);
+    // printf("%d\n", ptr->arr[2]);
+    printf("\nYES1\n");
+}
 int main()
 {
-    struct stack *s = (struct stack *)malloc(s->size * sizeof(struct stack));
+    struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     s->size = 3;
     s->top = -1;
     s->arr = (int *)malloc(s->size * sizeof(int));
     push(s, 5);
     push(s, 56);
     push(s, 566);
-    peek(s, 2);
+    change(s, 1, 12);
+    // peek(s,2);
+    printf("%d\n", s->arr[1]);
+    printf("%d\n", s->arr[2]);
+    // peek(s, 2);
     return 0;
 }
