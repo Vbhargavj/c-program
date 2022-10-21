@@ -1,44 +1,87 @@
 #include <stdio.h>
-int IsFull(int rear)
+#include <stdlib.h>
+/ so struct queue
 {
-    if (rear == 15 - 1)
+    int f;
+    int r;
+    int size;
+    int *arr;
+};
+
+int isfull(struct queue *q)
+{
+    if (q->r == q->size - 1)
     {
         return 0;
     }
     else
     {
+        printf("ok");
         return 1;
     }
-    // (rear == -1) ?
 }
-int IsEmpty(int front)
+int isempty(struct queue *q)
 {
-    if (front == -1)
+    if (q->f == -1)
     {
         return 0;
     }
+    else if (q->f == q->r)
+    {
+    }
+
     else
     {
-        return 1;
+        // q->f++;
+        printf("ok");
+        return q->arr[q->f++];
     }
-    // front==0 ? return 0 : return 1;
 }
-void insert(int *rear, int *front ,int arr[],int n)
+void insert(struct queue *q, int n)
 {
-    if (IsFull(&rear))
+    if (isfull(q))
     {
-        printf("\nQueue is full can't enter the value\n");
+        if (q->r == -1)
+        {
+            q->r = 0;
+            q->f = 0;
+            q->arr[q->r] = n;
+            printf("ok");
+        }
+        else
+        {
+            q->r++;
+            q->arr[q->r] = n;
+            // printf("ok");
+        }
     }
-    else if (rear == -1)
+    else
     {
-        rear = front = 0;
-        arr[front]=n;
+        printf("\nThe queue is full so you can not enter the value \n");
+    }
+}
+int delete (struct queue *q)
+{
+    if (isempty(q))
+    {
+        q->f++;
+    }
+    else
+    {
+        printf("Delete operation not posible on queue because queue is empty\n");
     }
 }
 int main()
 {
-    int queue[15];
-    int front = -1, rear = -1;
+    struct queue q;
+    q.f = q.r = -1;
+    q.size = 10;
+    q.arr = (int *)malloc(q.size * sizeof(int));
+    insert(&q, 13);
+    insert(&q, 13);
+    char x = delete (&q);
+    x = delete (&q);
+    x = delete (&q);
 
     return 0;
 }
