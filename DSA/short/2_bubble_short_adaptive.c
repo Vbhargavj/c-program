@@ -8,11 +8,13 @@ void printarray(int *ary, int n)
         printf("%d\n", ary[i]);
     }
 }
+
 void bubble_short(int *ary, int size)
 {
     int tmp, adaptive = 0;
     for (int i = 0; i < size - 1; i++)
     {
+        adaptive = 1;
         for (int j = 0; j < size - 1 - i; j++)
         {
             if (ary[j] > ary[j + 1])
@@ -22,12 +24,8 @@ void bubble_short(int *ary, int size)
                 ary[j + 1] = tmp;
                 adaptive = 0;
             }
-            else
-            {
-                adaptive = 1;
-            }
         }
-        if (adaptive == 0)
+        if (adaptive)
         {
             return;
         }
