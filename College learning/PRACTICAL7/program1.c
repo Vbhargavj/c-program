@@ -2,7 +2,7 @@
 
 int main()
 {
-      printf("bhargav vadukar\n");
+    printf("bhargav vadukar\n");
     printf("enrollment no: 210210116054\n");
     int n;
     printf("Enter the length of array");
