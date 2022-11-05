@@ -67,13 +67,13 @@ int main()
     q->size = 5;
     q->f = q->r = -1;
     q->ary = (int *)malloc(sizeof(int) * q->size);
-    insert(q,2);
-    insert(q,2);
-    insert(q,2);
-    insert(q,2);
-    insert(q,2);
-    delete(q);
-    insert(q,2);
-    delete(q);
+    insert(q, 2);
+    insert(q, 2);
+    insert(q, 2);
+    insert(q, 2);
+    insert(q, 2);
+    delete (q);
+    insert(q, 2);
+    delete (q);
     return 0;
 }

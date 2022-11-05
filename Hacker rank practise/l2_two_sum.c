@@ -24,7 +24,7 @@ int main()
     int numsSize, *nums, target;
     scanf("%d", &numsSize);
     nums = (int *)malloc(sizeof(int) * numsSize);
-    for (int i = 0; i < numsSize; i++)
+    for (int i = 0; i < numsSize; i++) 
     {
         scanf("%d", &nums[i]);
     }
