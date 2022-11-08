@@ -19,6 +19,8 @@ char pop(struct stack *ptr)
 }
 int main()
 {
+    printf("\nBHARGAV JENTIBHAI VADUKAR\n");
+    printf("ENROLLMENT NO : 210210116054\n");
     struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     s->size = 30;
     s->top = -1;

@@ -16,7 +16,8 @@ struct intstack
     int top;
     int *arr;
 };
-// check the pop and create
+
+// check the if operand or operator
 int check(char c)
 {
     if (c != '+' && c != '-' && c != '/' && c != '*')
@@ -29,6 +30,7 @@ int check(char c)
     }
 }
 
+// display stack fo char
 void display(struct stack *ptr)
 {
     int p = ptr->top;
@@ -38,14 +40,15 @@ void display(struct stack *ptr)
     }
 }
 
-void intdisplay(struct stack *ptr)
+// display stack fo integer
+void intdisplay(struct intstack *ptr)
 {
-    for (int i = 0; ptr->top != -1; i--)
+    for (int i = ptr->top; i != -1; i--)
     {
         printf("%d\n", ptr->arr[i]);
     }
 }
-
+// here all kind of calculation done here
 int op(char op, int b, int a)
 {
     switch (op)
@@ -72,68 +75,86 @@ int op(char op, int b, int a)
         break;
     }
 }
+// here pop for char
 char pop(struct stack *ptr)
 {
     return ptr->arr[ptr->top--];
 }
+
+// here pop for int
 int intpop(struct intstack *ptr)
 {
-    return ptr->arr[ptr->top--] + '0';
+    return ptr->arr[ptr->top--];
 }
+
+// here push for char
 void push(struct stack *ptr, char c)
 {
     ptr->top++;
     ptr->arr[ptr->top] = c;
 }
-void intpush(struct intstack *ptr, char c)
+
+// here push for int
+void intpush(struct intstack *ptr, int c)
 {
-    int n = c + '0';
     ptr->top++;
-    ptr->arr[ptr->top] = n;
+    ptr->arr[ptr->top] = c;
+}
+// this function is use to store the expresion
+void store(struct stack *ptr, char *c)
+{
+    char ch;
+    for (int i = strlen(c) - 1; i >= 0; i--)
+    {
+        ch = c[i];
+        push(ptr, ch);
+    }
 }
 
 int main()
 {
+    // below portion intilize char stack
     struct stack *postfix = (struct stack *)malloc(sizeof(struct stack));
     postfix->top = -1;
     postfix->size = 30;
     postfix->arr = (char *)malloc(postfix->size * sizeof(char));
 
+    // below portion intilize int stack
     struct intstack *result = (struct intstack *)malloc(sizeof(struct intstack));
     result->top = -1;
     result->size = 30;
     result->arr = (int *)malloc(result->size * sizeof(int));
+
+    // here need some variable
     char ex[30], c;
+    int a, m, n, sum;
+
     printf("Enter the expresion\n");
     scanf("%s", ex);
-    for (int i = strlen(ex) - 1; i >= 0; i--)
-    {
-        c = ex[i];
-        push(postfix, c);
-    }
-    int n, m, sum;
-    for (int i = 0; i < strlen(ex); i++)
+
+    // store value in stack
+    store(postfix, ex);
+
+    // here our logic
+    for (int i = postfix->top; i != -1; i--)
     {
         c = pop(postfix);
-        printf("in loop%c\n", c);
         if (check(c))
         {
-            printf("in else %c\n", c);
-            intpush(result, c);
+            a = c - '0';
+
+            intpush(result, a);
         }
         else
         {
-            printf("in  if%c\n", c);
-            n = intpop(result);
             m = intpop(result);
-            sum = op(c, n, m);
-            result->top++;
-            result->arr[result->top] = sum;
+            n = intpop(result);
+            sum = op(c, m, n);
+            intpush(result, sum);
         }
     }
-
-    display(postfix);
-    printf("%d\n",sum=intpop(result));
+    // display final result
+    intdisplay(result);
 
     return 0;
 }
