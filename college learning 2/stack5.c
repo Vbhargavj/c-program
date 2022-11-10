@@ -113,6 +113,8 @@ void store(struct stack *ptr, char *c)
 
 int main()
 {
+    printf("\nBHARGAV JENTIBHAI VADUKAR\n");
+    printf("ENROLLMENT NO : 210210116054\n\n");
     // below portion intilize char stack
     struct stack *postfix = (struct stack *)malloc(sizeof(struct stack));
     postfix->top = -1;

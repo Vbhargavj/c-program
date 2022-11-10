@@ -3,3 +3,4 @@
 a.HTML
 b.FTP
 c.HTTP
+d.URL
