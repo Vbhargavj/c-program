@@ -8,6 +8,7 @@ struct node
     struct node *next;
 };
 
+// this function take struct node pointer and insert value at first
 struct node *insert_at_first(struct node *ptr)
 {
     int value;
@@ -27,6 +28,7 @@ struct node *insert_at_first(struct node *ptr)
     }
 }
 
+// this function take struct node pointer and insert at end
 struct node *insert_at_end(struct node *ptr)
 {
     int value;
@@ -44,6 +46,7 @@ struct node *insert_at_end(struct node *ptr)
     printf("Node Inserted \n");
 }
 
+// this function take struct node pointer and display the linkedlist
 void display(struct node *ptr)
 {
     while (ptr != NULL)
@@ -53,6 +56,7 @@ void display(struct node *ptr)
     }
 }
 
+// this function take struct node pointer and find the given value and add value after given value
 void insert_after_value(struct node *ptr)
 {
     int val, value, flag = 0;
@@ -95,6 +99,7 @@ void insert_before_value(struct node *ptr)
 {
 }
 
+// this function take struct node pointer and delete node at end
 struct node *delete_at_end(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -115,6 +120,7 @@ struct node *delete_at_end(struct node *ptr)
     printf("Delete at end\n");
 }
 
+// this function take struct node pointer and delete node at start(head)
 struct node *delete_at_begin(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -124,6 +130,7 @@ struct node *delete_at_begin(struct node *ptr)
     return p;
 }
 
+// this function take struct node pointer and delete node after given value
 void delete_after_value(struct node *ptr)
 {
 
@@ -155,6 +162,7 @@ void delete_after_value(struct node *ptr)
     free(q);
 }
 
+// this function take struct node pointer and delete node before given value
 void delete_before_value(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -189,6 +197,7 @@ void delete_before_value(struct node *ptr)
     free(q);
 }
 
+// this function take struct node pointer and delete node at given value
 void delete_at_value(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -247,6 +256,7 @@ void delete_at_value(struct node *ptr)
 
 int main()
 {
+    // intilisilize section
     struct node *head = (struct node *)malloc(sizeof(struct node));
     struct node *last = (struct node *)malloc(sizeof(struct node));
 
@@ -257,6 +267,7 @@ int main()
     last->next = NULL;
 
     int c, i = 0;
+    // here this loop repeat infinite and called all function perform according
     while (1)
     {
         fflush(stdin);
@@ -287,6 +298,7 @@ int main()
         printf("\t13:EXIT\n");
         printf("\n\n\t\t");
         scanf("%d", &c);
+
         switch (c)
         {
         case 1:
@@ -333,6 +345,5 @@ int main()
             break;
         }
     }
-
     return 0;
 }

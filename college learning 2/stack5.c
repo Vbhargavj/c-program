@@ -48,6 +48,7 @@ void intdisplay(struct intstack *ptr)
         printf("%d\n", ptr->arr[i]);
     }
 }
+
 // here all kind of calculation done here
 int op(char op, int b, int a)
 {
@@ -75,6 +76,7 @@ int op(char op, int b, int a)
         break;
     }
 }
+
 // here pop for char
 char pop(struct stack *ptr)
 {

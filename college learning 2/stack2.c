@@ -33,9 +33,18 @@ int main()
         push(s, r[i]);
     }
     int count = 0;
+    char an = '\n';
     for (int i = 0; i < strlen(r); i++)
     {
         c = pop(s);
+        //    printf("c=%c,an=%c\n",c,an);
+        //   if (c == ')')
+        //    {
+        //       if (an != '+' && an != '-' && an != '*' && an != '/')
+        //        {
+        //           count++;
+        //       }
+        // }
         if (c == '(')
         {
             count++;
@@ -44,7 +53,9 @@ int main()
         {
             count--;
         }
+        an = c;
     }
+
     if (count == 0)
     {
         printf("Expresion is ok\n");
