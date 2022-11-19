@@ -101,7 +101,7 @@ int main()
             printf("in loop :%c\n", c);
             push(result, c);
         }
-
+    
         // this function is use to perform operation
         else if (c == '+' || c == '-' || c == '*' || c == '/')
         {
@@ -110,6 +110,7 @@ int main()
             {
                 push(postfix, c);
             }
+
             // when postfix is not empty check condition and perform it
             else if (postfix->top >= 0)
             {

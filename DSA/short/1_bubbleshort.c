@@ -68,10 +68,15 @@ void bubble_short2(int *ary, int size)
 */
 int main()
 {
-    int ary[] = {21, 34, 12, 2, 67};
-    int size = 5;
+    int ary[50];
+    int size = 50;
+    for (int i = 0; i < 50; i++)
+    {
+        scanf("%d", &ary[i]);
+    }
+
     printarray(ary, size);
-    bubble_short2(ary, 5);
+    bubble_short2(ary, 50);
     printf("\n");
     printarray(ary, size);
     return 0;

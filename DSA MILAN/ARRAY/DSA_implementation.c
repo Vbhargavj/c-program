@@ -6,6 +6,7 @@ struct myArray {
     int used_size;
     int *ptr;
 };
+
 void createArray(struct myArray *a,int tsize,int usize){
     a->total_size = tsize;
     a->used_size = usize;

@@ -1,17 +1,17 @@
 // short the array
 #include <stdio.h>
 
-void printarray(int *ary, int n)
+void printarray(float *ary, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        printf("%d\n", ary[i]);
+        printf("%f\n", ary[i]);
     }
 }
 
-void bubble_short(int *ary, int size)
+void bubble_short(float *ary, int size)
 {
-    int tmp, adaptive = 0;
+    float tmp, adaptive = 0;
     for (int i = 0; i < size - 1; i++)
     {
         adaptive = 1;
@@ -34,10 +34,15 @@ void bubble_short(int *ary, int size)
 
 int main()
 {
-    int ary[] = {21, 34, 12, 2, 67};
-    int size = 5;
+    float ary[60];
+    int size = 60;
+    for (int i = 0; i < size; i++)
+    {
+        scanf("%f", &ary[i]);
+    }
+    
     printarray(ary, size);
-    bubble_short(ary, 5);
+    bubble_short(ary, size);
     printf("\n");
     printarray(ary, size);
     return 0;

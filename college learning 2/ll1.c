@@ -51,6 +51,7 @@ void display(struct node *ptr)
 {
     while (ptr != NULL)
     {
+        // sleep(2);
         printf("Element : %d\n", ptr->data);
         ptr = ptr->next;
     }
@@ -253,7 +254,19 @@ void delete_at_value(struct node *ptr)
 //         break;
 //     }
 // }
-
+void deletell(struct node *ptr)
+{
+    struct node *t = (struct node *)malloc(sizeof(struct node));
+    struct node *s = (struct node *)malloc(sizeof(struct node));
+    s = ptr->next;
+    while (s != NULL)
+    {
+        s = s->next;
+        t = s;
+        free(t);
+    }
+    free(ptr);
+}
 int main()
 {
     // intilisilize section
@@ -266,7 +279,7 @@ int main()
     last->data = 2;
     last->next = NULL;
 
-    int c, i = 0;
+    int c, i = 0, flag = 0, val;
     // here this loop repeat infinite and called all function perform according
     while (1)
     {
@@ -279,23 +292,28 @@ int main()
         printf("\x1B[30m");
         printf("\tINSERT operations\n");
         printf("\x1B[35m");
-        printf("\t\t1:insert at begin\n");
-        printf("\t\t2:insert at end\n");
-        printf("\t\t3:insert at given value\n");
-        printf("\t\t4:insert before value\n");
-        printf("\t\t5:insert after given value\n\n");
+        printf("\t\t1:Insert At Begin\n");
+        printf("\t\t2:Insert At End\n");
+        printf("\t\t3:Insert At Given Value\n");
+        printf("\t\t4:Insert Before Value\n");
+        printf("\t\t5:Insert After Given Value\n\n");
         printf("\x1B[30m");
-        printf("\t2:DELETE operations\n");
+        printf("\tDELETE operations\n");
         printf("\x1B[35m");
-        printf("\t\t6:delete at begin\n");
-        printf("\t\t7:delete at end\n");
-        printf("\t\t8:delete at value\n");
-        printf("\t\t9:delete after value\n");
-        printf("\t\t10:delete before value\n\n");
+        printf("\t\t6:Delete At Begin\n");
+        printf("\t\t7:Delete At End\n");
+        printf("\t\t8:Delete At Value\n");
+        printf("\t\t9:Delete After Value\n");
+        printf("\t\t10:Delete Before Value\n\n");
         printf("\x1B[0m");
         printf("\t11:DISPLAY\n");
-        printf("\t12:LINKEDLIST OP\n");
-        printf("\t13:EXIT\n");
+        printf("\x1B[30m");
+        printf("\tLINKEDLIST OP\n");
+        printf("\x1B[35m");
+        printf("\t\t12:Delete Linkedlist\n");
+        printf("\t\t13:Create Linkedlist\n");
+        printf("\x1B[0m");
+        printf("\t14:EXIT\n");
         printf("\n\n\t\t");
         scanf("%d", &c);
 
@@ -332,12 +350,28 @@ int main()
             delete_before_value(head);
             break;
         case 11:
-            display(head);
+            if (flag == 1)
+            {
+                printf("You deleted linkedlist\n");
+            }
+            else
+            {
+                display(head);
+            }
+
             break;
         case 12:
-            display(head);
+            deletell(head);
+            flag = 1;
             break;
         case 13:
+            // struct node *head = (struct node *)malloc(sizeof(struct node));
+
+            // printf("Enter the value \n");
+            // scanf("%d", &val);
+            head->data = val;
+            break;
+        case 14:
             exit(1);
             break;
         default:

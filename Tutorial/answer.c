@@ -4,7 +4,8 @@ int main()
 {
 
     int c;
-    scanf("%d",&c);
+    scanf("%d", &c);
+
     switch (c)
     {
     case 1:
@@ -32,6 +33,7 @@ int main()
         else
             return 0;
         break;
+
     case 5:
         if (c == 'd')
             return 1;
