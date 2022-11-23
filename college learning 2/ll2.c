@@ -8,14 +8,21 @@ struct node
     struct node *next;
     struct node *prev;
 };
-struct node *insert_at_first(struct node *, int);
-void insert_after_value(struct node *, int, int);
-void insert_before_value(struct node *, int, int);
-void insert_at_end(struct node *, int);
+
+struct node *insert_at_first(struct node *);
+void insert_after_value(struct node *);
+void insert_before_value(struct node *);
+void insert_at_end(struct node *);
 void display(struct node *);
 struct node *delete_at_begin(struct node *);
 void delete_at_end(struct node *);
 void delete_at_value(struct node *);
+void delete_before_value(struct node *);
+void delete_after_value(struct node *);
+int is_empty(struct node *);
+int search(struct node *);
+void handle(struct node *);
+void change_value(struct node *);
 
 int main()
 {
@@ -29,25 +36,10 @@ int main()
 
     second->prev = head;
     second->data = 3;
-    second->next = last;
+    second->next = NULL;
 
-    last->prev = second;
-    last->data = 78;
-    last->next = NULL;
-
-    // head = insertatfirst(head, 20);
-    // insert_at_end(head, 23);
-    // insert_at_end(head, 2);
-    // insert_at_end(head, 253);
-    // insert_at_end(head, 13);
-    // insert_after_value(head, 3, 50);
-    insert_before_value(head, 3, 12);
-    display(head);
-    printf("\n");
-    // head = delete_at_begin(head);
-    // delete_at_end(head);
-    // delete_at_value(head);
-    // display(head);
+    int c, flag = 0;
+    handle(head);
 
     return 0;
 }
@@ -61,8 +53,11 @@ void display(struct node *ptr)
     }
 }
 
-struct node *insert_at_first(struct node *head, int val)
+struct node *insert_at_first(struct node *head)
 {
+    int val;
+    printf("Enter the value ");
+    scanf("%d", &val);
     struct node *temp = (struct node *)malloc(sizeof(struct node));
     // struct node *head2=head;
     temp->data = val;
@@ -72,9 +67,11 @@ struct node *insert_at_first(struct node *head, int val)
     head = temp;
 }
 
-void insert_at_end(struct node *head, int val)
+void insert_at_end(struct node *head)
 {
-    int b = 0;
+    int val;
+    printf("Enter the value to insert at end of list");
+    scanf("%d", &val);
     while (head->next != NULL)
     {
         head = head->next;
@@ -84,10 +81,15 @@ void insert_at_end(struct node *head, int val)
     temp->next = NULL;
     temp->prev = head;
     head->next = temp;
-};
+}
 
-void insert_after_value(struct node *head, int match, int val)
+void insert_after_value(struct node *head)
 {
+    int match, val;
+    printf("Enter the number to after add value\n");
+    scanf("%d", &match);
+    printf("Enter the value to insert\n");
+    scanf("%d", &val);
     while (head->next != NULL)
     {
         if (head->data == match)
@@ -105,6 +107,11 @@ void insert_after_value(struct node *head, int match, int val)
         temp->prev = head;
         head->next = temp;
         head->next->prev = temp;
+        printf("Inserted\n");
+    }
+    else
+    {
+        printf("Value not found\n");
     }
 }
 
@@ -121,8 +128,14 @@ void insert_after_value(struct node *head, int match, int val)
 //     insert_after_value(head, head->data, val);
 // }
 
-void insert_before_value(struct node *head, int match, int val)
+void insert_before_value(struct node *head)
 {
+    int match, val;
+    printf("Enter the number to before add value\n");
+    scanf("%d", &match);
+    printf("Enter the value to insert\n");
+    scanf("%d", &val);
+
     while (head->next != NULL)
     {
         if (head->data == match)
@@ -138,11 +151,38 @@ void insert_before_value(struct node *head, int match, int val)
         temp->next = head;
         temp->prev = head->prev;
         head->prev = temp;
-        head->prev->prev->next= temp;
-        
+        head->prev->prev->next = temp;
+        printf("Inserted\n");
+    }
+    else
+    {
+        printf("Value not found\n");
     }
 }
-
+void change_value(struct node *head)
+{
+    int match, val;
+    printf("Enter that value for find\n");
+    scanf("%d", &match);
+    printf("Enter the value\n");
+    scanf("%d", &val);
+    while (head->next != NULL)
+    {
+        if (head->data == match)
+        {
+            break;
+        }
+    }
+    if (head->data == match)
+    {
+        head->data = val;
+        printf("Value change %d to %d\n", match, val);
+    }
+    else
+    {
+        printf("Valu not found\n");
+    }
+}
 struct node *delete_at_begin(struct node *head)
 {
     struct node *temp = head;
@@ -152,9 +192,9 @@ struct node *delete_at_begin(struct node *head)
     printf("Deleted\n");
     return head;
 }
+
 void delete_at_end(struct node *head)
 {
-    // struct node *head2 = head;
     while (head->next != NULL)
     {
         head = head->next;
@@ -162,6 +202,7 @@ void delete_at_end(struct node *head)
     struct node *temp = head;
     free(temp);
     head->prev->next = NULL;
+    printf("Deleted\n");
 }
 
 void delete_at_value(struct node *head)
@@ -172,10 +213,8 @@ void delete_at_value(struct node *head)
 
     while (head->next != NULL)
     {
-        // printf("in loop\n");
         if (head->data == match)
         {
-            // printf("in if\n");
             break;
         }
         head = head->next;
@@ -183,13 +222,210 @@ void delete_at_value(struct node *head)
 
     if (head->data == match)
     {
-        // printf("Yes\n");
         struct node *temp = head;
-        // printf("Yes\n");
         head->prev->next = head->next;
-        // printf("Yes\n");
         head->next->prev = head->prev;
-        // printf("Yes\n");
         free(temp);
+        printf("Deleted\n");
+    }
+    else
+    {
+        printf("Value not found\n");
+    }
+}
+
+void delete_before_value(struct node *head)
+{
+    int match;
+    printf("Enter the value to delete before\n");
+    scanf("%d", &match);
+    while (head->next != NULL)
+    {
+        if (head->data == match)
+        {
+            break;
+        }
+        head = head->next;
+    }
+    if (head->data == match)
+    {
+        struct node *temp = head->prev;
+        head->prev->prev->next = head;
+        head->prev = head->prev->prev;
+        free(temp);
+        printf("Deleted\n");
+    }
+    else
+    {
+        printf("Value not found\n");
+    }
+}
+
+void delete_after_value(struct node *head)
+{
+    int match;
+    printf("Enter the value to delete after\n");
+    scanf("%d", &match);
+    while (head->next != NULL)
+    {
+        if (head->data == match)
+        {
+            break;
+        }
+        head = head->next;
+    }
+    if (head->data == match)
+    {
+        struct node *temp = head->next;
+        head->next = head->next->next;
+        head->next->prev = head->next;
+        free(temp);
+        printf("Deleted\n");
+    }
+    else
+    {
+        printf("Value not found\n");
+    }
+}
+
+int is_empty(struct node *head)
+{
+    if (head == NULL)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int search(struct node *head)
+{
+    int val, f = -2;
+    printf("Enter the value to search\n");
+    scanf("%d", &val);
+    while (head->next != NULL)
+    {
+        f++;
+        if (head->data == val)
+        {
+            f = -1;
+            printf("Value founded\n");
+            break;
+        }
+        head = head->next;
+    }
+    if (f == -2)
+    {
+        printf("Value not found\n");
+    }
+    else
+    {
+        printf("Value found on index of %d\n", f + 2);
+    }
+    sleep(3);
+}
+
+void handle(struct node *head)
+{
+    while (1)
+    {
+        int c, flag;
+        fflush(stdin);
+        // sleep(1);
+        system("cls");
+        printf("\x1B[33m");
+        printf("Enter the number to perform any operation\n");
+        printf("\x1B[30m");
+        printf("\tINSERT operations\n");
+        printf("\x1B[35m");
+        printf("\t\t1:Insert At Begin\n");
+        printf("\t\t2:Insert At End\n");
+        printf("\t\t3:Insert At Given Value\n");
+        printf("\t\t4:Insert Before Value\n");
+        printf("\t\t5:Insert After Given Value\n\n");
+        printf("\x1B[30m");
+        printf("\tDELETE operations\n");
+        printf("\x1B[35m");
+        printf("\t\t6:Delete At Begin\n");
+        printf("\t\t7:Delete At End\n");
+        printf("\t\t8:Delete At Value\n");
+        printf("\t\t9:Delete After Value\n");
+        printf("\t\t10:Delete Before Value\n\n");
+        printf("\x1B[0m");
+        printf("\t11:DISPLAY\n");
+        printf("\x1B[30m");
+        printf("\tLINKEDLIST OP\n");
+        printf("\x1B[35m");
+        printf("\t\t12:Delete Linkedlist\n");
+        printf("\t\t13:Create Linkedlist\n");
+        printf("\x1B[0m");
+        printf("\t14:EXIT\n");
+        printf("\n\n\t\t");
+        scanf("%d", &c);
+
+        switch (c)
+        {
+        case 1:
+            head = insert_at_first(head);
+            break;
+        case 2:
+            insert_at_end(head);
+            break;
+        case 3:
+            insert_at_value(head);
+            break;
+        case 4:
+            insert_before_value(head);
+            break;
+        case 5:
+            insert_after_value(head);
+            break;
+        case 6:
+            // if (is_empty(head->next))
+            // {
+            //     printf("list is underflow\n");
+            //     handle(head);
+            // }
+            head = delete_at_begin(head);
+            break;
+        case 7:
+
+            delete_at_end(head);
+            break;
+        case 8:
+            delete_at_value(head);
+            break;
+        case 9:
+            delete_after_value(head);
+            break;
+        case 10:
+            delete_before_value(head);
+            break;
+        case 11:
+            if (flag == 1)
+            {
+                printf("You deleted linkedlist\n");
+            }
+            else
+            {
+                display(head);
+            }
+
+            break;
+        case 12:
+            // deletell(head);
+            flag = 1;
+            break;
+        case 13:
+            search(head);
+            break;
+        case 14:
+            exit(1);
+            break;
+        default:
+            printf("Enter proper value\n");
+            sleep(3);
+            break;
+        }
+        sleep(3);
     }
 }

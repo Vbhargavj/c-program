@@ -98,6 +98,7 @@ void insert_after_value(struct node *ptr)
 
 void insert_before_value(struct node *ptr)
 {
+    
 }
 
 // this function take struct node pointer and delete node at end
@@ -365,10 +366,6 @@ int main()
             flag = 1;
             break;
         case 13:
-            // struct node *head = (struct node *)malloc(sizeof(struct node));
-
-            // printf("Enter the value \n");
-            // scanf("%d", &val);
             head->data = val;
             break;
         case 14:
