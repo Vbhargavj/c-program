@@ -98,7 +98,6 @@ void insert_after_value(struct node *ptr)
 
 void insert_before_value(struct node *ptr)
 {
-    
 }
 
 // this function take struct node pointer and delete node at end
@@ -135,7 +134,6 @@ struct node *delete_at_begin(struct node *ptr)
 // this function take struct node pointer and delete node after given value
 void delete_after_value(struct node *ptr)
 {
-
     struct node *p = (struct node *)malloc(sizeof(struct node));
     struct node *q = (struct node *)malloc(sizeof(struct node));
     p = ptr;

@@ -5,6 +5,7 @@ struct node
 {
     int data;
     struct node *next;
+    struct node *prev;
 };
 
 struct node *insert_at_first(struct node *);
@@ -13,7 +14,7 @@ void insert_before_value(struct node *);
 void insert_at_end(struct node *);
 void display(struct node *);
 struct node *delete_at_begin(struct node *);
-void delete_at_end(struct node *);
+struct node *delete_at_end(struct node *);
 void delete_at_value(struct node *);
 void delete_before_value(struct node *);
 void delete_after_value(struct node *);
@@ -25,8 +26,21 @@ void change_value(struct node *);
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
-    head->data = 12;
-    head->next = head;
+    struct node *second = (struct node *)malloc(sizeof(struct node));
+    struct node *last = (struct node *)malloc(sizeof(struct node));
+
+    head->data = 34;
+    head->next = second;
+    head->prev = last;
+
+    second->data = 2;
+    second->next = last;
+    second->prev = head;
+
+    last->data = 45;
+    last->prev = second;
+    last->next = head;
+
     handle(head);
 
     return 0;
@@ -44,103 +58,79 @@ void display(struct node *head)
 
 struct node *insert_at_first(struct node *head)
 {
-    int value;
-    struct node *tmp = (struct node *)malloc(sizeof(struct node));
-    struct node *head2 = head;
-    printf("Enter the value to insert\n");
-    scanf("%d", &value);
-    if (tmp == NULL)
-    {
-        printf("node not created\n");
-    }
-    else
-    {
-        printf("Created \n");
-        tmp->data = value;
-        tmp->next = head;
-        while (head->next != head2)
-        {
-            head = head->next;
-        }
-        head->next = tmp;
-        // return tmp;
-        head2 = tmp;
-        return tmp;
-    }
-}
+    int val;
+    printf("Enter the value\n");
+    scanf("%d", &val);
 
-// this function take struct node pointer and insert at end
-// void insert_at_end(struct node *head)
-// {
-//     int value;
-//     struct node *tmp = (struct node *)malloc(sizeof(struct node));
-//     struct node *head2=head;
-//     printf("Enter the value to insert at end\n");
-//     scanf("%d", &value);
-//     tmp->data = value;
-//     tmp->next=head;
-//     while (head->next!=head2 )
-//     {
-//         head = head->next;
-//     }
-//     head->next = tmp;
-//     printf("Node Inserted \n");
-// }
-void insert_at_end(struct node *head)
-{
     struct node *head2 = head;
-
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = val;
+    temp->next = head;
     while (head->next != head2)
     {
         head = head->next;
     }
-    insert_at_first(head);
+    temp->prev = head;
+    head->next = temp;
+    head2->prev = temp;
+    head = temp;
+    return head;
 }
 
-// this function take struct node pointer and find the given value and add value after given value
+void insert_at_end(struct node *head)
+{
+    int val;
+    printf("Enter the value\n");
+    scanf("%d", &val);
+    struct node *head2 = head;
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = val;
+    temp->next = head;
+    while (head->next != head2)
+    {
+        head = head->next;
+    }
+    temp->prev = head;
+    head->next = temp;
+}
+
 void insert_after_value(struct node *head)
 {
-    int match, value, flag = 0;
-    struct node *head2 = head;
-    printf("Enter the value to insert");
-    scanf("%d", &value);
-    printf("Enter the value  to add after\n");
+    int val, match;
+    printf("Enter the value to insert\n");
+    scanf("%d", &val);
+    printf("Enter the matching value\n");
     scanf("%d", &match);
+    struct node *head2 = head;
 
     while (head->next != head2)
     {
         if (head->data == match)
         {
-            printf("Value found\n");
             break;
         }
+
         head = head->next;
     }
-
     if (head->data == match)
     {
-        struct node *tmp = (struct node *)malloc(sizeof(struct node));
-        tmp->data = value;
-        tmp->next = head->next;
-        head->next = tmp;
-        printf("Inserted\n");
-    }
-    else
-    {
-        printf("Value not found in list\n");
+        struct node *temp = (struct node *)malloc(sizeof(struct node));
+        temp->data = val;
+        temp->next = head->next;
+        temp->prev = head;
+        head->next->prev = temp;
+        head->next = temp;
     }
 }
 
 void insert_before_value(struct node *head)
 {
-    int match, val;
-    printf("Enter the number to before add value\n");
-    scanf("%d", &match);
+    int val, match;
     printf("Enter the value to insert\n");
     scanf("%d", &val);
-
+    printf("Enter the matching value\n");
+    scanf("%d", &match);
     struct node *head2 = head;
-    struct node *prev;
 
     while (head->next != head2)
     {
@@ -148,7 +138,7 @@ void insert_before_value(struct node *head)
         {
             break;
         }
-        prev = head;
+
         head = head->next;
     }
     if (head->data == match)
@@ -156,33 +146,26 @@ void insert_before_value(struct node *head)
         struct node *temp = (struct node *)malloc(sizeof(struct node));
         temp->data = val;
         temp->next = head;
-        prev->next = temp;
-    }
-    else
-    {
-        printf("Value not found\n");
+        temp->prev = head->prev;
+        head->prev->next = temp;
     }
 }
 
 struct node *delete_at_begin(struct node *head)
 {
-    struct node *vbj;
+    struct node *temp = head->next;
     struct node *head2 = head;
-    vbj = head->next;
-    // struct node *head2 = head;
-
     while (head->next != head2)
     {
         head = head->next;
     }
-    head->next = vbj;
+    temp->prev = head;
+    head->next = temp;
     free(head2);
-    head = vbj;
-    return vbj;
+    return temp;
 }
 
-// this function take struct node pointer and delete node at end
-void delete_at_end(struct node *head)
+struct node *delete_at_end(struct node *head)
 {
     struct node *head2 = head;
     while (head->next != head2)
@@ -190,6 +173,33 @@ void delete_at_end(struct node *head)
         head = head->next;
     }
     delete_at_begin(head);
+}
+
+void delete_at_value(struct node *head)
+{
+    int match;
+    printf("Enter the value to to insert after given value\n");
+    scanf("%d", &match);
+
+    struct node *head2 = head;
+    while (head->next != head2)
+    {
+        if (head->data == match)
+        {
+            break;
+        }
+
+        head = head->next;
+    }
+    if (head->data == match)
+    {
+        head->prev->next = head->next;
+        head->next->prev = head->prev;
+    }
+    else
+    {
+        printf("Value not found\n");
+    }
 }
 
 void delete_after_value(struct node *head)
@@ -207,46 +217,23 @@ void delete_after_value(struct node *head)
         }
         head = head->next;
     }
+
     if (head->data == match)
     {
-        struct node *temp = head->next;
+        head2 = head->next;
+        head->next->prev = head;
         head->next = head->next->next;
-        free(temp);
+        free(head2);
+        printf("Deleted\n");
     }
 }
 
 void delete_before_value(struct node *head)
 {
     int match;
-    printf("Enter the value to delete after\n");
+    printf("Enter the value to delete before\n");
     scanf("%d", &match);
     struct node *head2 = head;
-    struct node *prev = head;
-
-    while (head->next != head2)
-    {
-        if (head->next->data == match)
-        {
-            break;
-        }
-        prev = head;
-        head = head->next;
-    }
-    if (head->next->data == match)
-    {
-        prev->next = head->next;
-        struct node *temp = head;
-        free(temp);
-    }
-}
-
-void delete_at_value(struct node *head)
-{
-    int match;
-    printf("Enter the value to delete after\n");
-    scanf("%d", &match);
-    struct node *head2 = head;
-    struct node *prev = head;
 
     while (head->next != head2)
     {
@@ -254,15 +241,70 @@ void delete_at_value(struct node *head)
         {
             break;
         }
-        prev = head;
         head = head->next;
     }
 
     if (head->data == match)
     {
-        prev->next = head->next;
-        struct node *temp = head;
-        free(temp);
+        head2 = head->prev;
+        head->prev->prev->next = head;
+        head->prev = head->prev->prev;
+        free(head2);
+    }
+}
+
+int search(struct node *head)
+{
+    int val, f = -2;
+    printf("Enter the value to search\n");
+    scanf("%d", &val);
+    struct node *head2 = head;
+    while (head->next != head2)
+    {
+        f++;
+        if (head->data == val)
+        {
+            f = -1;
+            printf("Value founded\n");
+            break;
+        }
+        head = head->next;
+    }
+    if (f == -2)
+    {
+        printf("Value not found\n");
+    }
+    else
+    {
+        printf("Value found on index of %d\n", f + 2);
+    }
+}
+
+void insert_at_value(struct node *head)
+{
+    int val, match;
+    printf("Enter the value to at change\n");
+    scanf("%d", &match);
+
+    printf("Enter the value to insert\n");
+    scanf("%d", &val);
+    struct node *head2 = head;
+    while (head->next != head2)
+    {
+        if (head->data == match)
+        {
+            break;
+        }
+        head = head->next;
+    }
+    if (head->data == match)
+    {
+        head->data = val;
+        printf("Value changed\n");
+    }
+    else
+    {
+        printf("Value not found\n");
     }
 }
 
@@ -272,7 +314,7 @@ void handle(struct node *head)
     {
         int c, flag;
         fflush(stdin);
-        // sleep(1);
+
         system("cls");
         printf("\x1B[33m");
         printf("Enter the number to perform any operation\n");
@@ -313,7 +355,7 @@ void handle(struct node *head)
             insert_at_end(head);
             break;
         case 3:
-            // insert_at_value(head);
+            insert_at_value(head);
             break;
         case 4:
             insert_before_value(head);
@@ -322,19 +364,13 @@ void handle(struct node *head)
             insert_after_value(head);
             break;
         case 6:
-            // if (is_empty(head->next))
-            // {
-            //     printf("list is underflow\n");
-            //     handle(head);
-            // }
             head = delete_at_begin(head);
             break;
         case 7:
-
             delete_at_end(head);
             break;
         case 8:
-            // delete_at_value(head);
+            delete_at_value(head);
             break;
         case 9:
             delete_after_value(head);
@@ -343,31 +379,22 @@ void handle(struct node *head)
             delete_before_value(head);
             break;
         case 11:
-            if (flag == 1)
-            {
-                printf("You deleted linkedlist\n");
-            }
-            else
-            {
-                display(head);
-            }
-
+            display(head);
             break;
         case 12:
             // deletell(head);
-            flag = 1;
             break;
         case 13:
-            // search(head);
+            search(head);
             break;
         case 14:
             exit(1);
             break;
         default:
-            printf("Enter proper value\n");
-            sleep(3);
+            printf("Enter proper value to perform operation\n");
             break;
         }
-        sleep(3);
+        printf("press any key to go main menu\n");
+        scanf("%d");
     }
 }
