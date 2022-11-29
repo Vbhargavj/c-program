@@ -20,7 +20,8 @@ void delete_after_value(struct node *);
 int is_empty(struct node *);
 int search(struct node *);
 void handle(struct node *);
-void change_value(struct node *);
+void insert_at_value(struct node *);
+void deletell(struct node *);
 
 int main()
 {
@@ -86,6 +87,7 @@ struct node *insert_at_first(struct node *head)
 //     head->next = tmp;
 //     printf("Node Inserted \n");
 // }
+
 void insert_at_end(struct node *head)
 {
     struct node *head2 = head;
@@ -266,14 +268,91 @@ void delete_at_value(struct node *head)
     }
 }
 
+int is_empty(struct node *head)
+{
+    if (head == NULL)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int search(struct node *head)
+{
+    struct node *head2 = head;
+    int match, f = -1;
+    printf("Enter the value to search\n");
+    scanf("%d", &match);
+
+    while (head->next != head2)
+    {
+        f++;
+        if (head->data == match)
+        {
+            printf("Value found on %d\n", f);
+            f = -2;
+            break;
+        }
+        head = head->next;
+    }
+    if (f != -2)
+    {
+        printf("Value not found\n");
+    }
+}
+
+void deletell(struct node *head)
+{
+    struct node *head2 = head;
+    struct node *temp;
+
+    while (head->next != head2)
+    {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+    printf("Linkedlist deleted\n");
+}
+
+void insert_at_value(struct node *head)
+{
+    int match, value;
+    struct node *head2 = head;
+    printf("Enter the value to insert");
+    scanf("%d", &value);
+    printf("Enter the value to search\n");
+    scanf("%d", &match);
+
+    while (head->next != head2)
+    {
+        if (head->data == match)
+        {
+            printf("Value found\n");
+            break;
+        }
+        head = head->next;
+    }
+
+    if (head->data == match)
+    {
+        head->data == value;
+        printf("Value changed %d to %d", match, value);
+    }
+    else
+    {
+        printf("Value not found in list\n");
+    }
+}
+
 void handle(struct node *head)
 {
     while (1)
     {
-        int c, flag;
+        int c;
         fflush(stdin);
-        // sleep(1);
         system("cls");
+
         printf("\x1B[33m");
         printf("Enter the number to perform any operation\n");
         printf("\x1B[30m");
@@ -309,65 +388,65 @@ void handle(struct node *head)
         case 1:
             head = insert_at_first(head);
             break;
+
         case 2:
             insert_at_end(head);
             break;
+
         case 3:
-            // insert_at_value(head);
+            insert_at_value(head);
             break;
+
         case 4:
             insert_before_value(head);
             break;
+
         case 5:
             insert_after_value(head);
             break;
+
         case 6:
-            // if (is_empty(head->next))
-            // {
-            //     printf("list is underflow\n");
-            //     handle(head);
-            // }
             head = delete_at_begin(head);
             break;
-        case 7:
 
+        case 7:
             delete_at_end(head);
             break;
+
         case 8:
-            // delete_at_value(head);
+            delete_at_value(head);
             break;
+
         case 9:
             delete_after_value(head);
             break;
+
         case 10:
             delete_before_value(head);
             break;
-        case 11:
-            if (flag == 1)
-            {
-                printf("You deleted linkedlist\n");
-            }
-            else
-            {
-                display(head);
-            }
 
+        case 11:
+            display(head);
             break;
+
         case 12:
-            // deletell(head);
-            flag = 1;
+            deletell(head);
             break;
+
         case 13:
-            // search(head);
+            search(head);
             break;
+
         case 14:
             exit(1);
             break;
+
         default:
             printf("Enter proper value\n");
             sleep(3);
             break;
         }
-        sleep(3);
+        printf("press any key to continue\n");
+        scanf("%d");
     }
 }

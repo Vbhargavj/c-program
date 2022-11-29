@@ -101,7 +101,7 @@ int main()
             printf("in loop :%c\n", c);
             push(result, c);
         }
-    
+
         // this function is use to perform operation
         else if (c == '+' || c == '-' || c == '*' || c == '/')
         {
