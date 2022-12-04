@@ -1,12 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "bhargav.h"
 
 int main()
 {
-    int ary={1,2,4,6,8};
-    int mid,high=4,low=0;
-    mid=(high+low)/2;
-
-    int rsum,lsum;
-
-    return 0;
+    // int *ary, size;
+    // size = 5;
+    // ary = int_Memo(size);
+    // ary[4] = 1;
+    // printf("%d\n", ary[4]);
 }

@@ -37,14 +37,18 @@ int main()
     for (int i = 0; i < strlen(r); i++)
     {
         c = pop(s);
-        //    printf("c=%c,an=%c\n",c,an);
-        //   if (c == ')')
-        //    {
-        //       if (an != '+' && an != '-' && an != '*' && an != '/')
-        //        {
-        //           count++;
-        //       }
-        // }
+        printf("c=%c,an=%c\n", c, an);
+        if (c == '(')
+        {
+            if (an == '+' || an == '-' || an == '*' || an == '/')
+            {
+            }
+            else
+            {
+                count = -1;
+                break;
+            }
+        }
         if (c == '(')
         {
             count++;
@@ -60,6 +64,7 @@ int main()
     {
         printf("Expresion is ok\n");
     }
+
     else
     {
         printf("Expresion is wrong\n");

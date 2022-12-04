@@ -1,0 +1,2 @@
+p(infix);
+        print
