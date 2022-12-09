@@ -8,12 +8,12 @@ struct node
     struct node *next;
 };
 
-// this function take struct node pointer and insert value at first
+// This function take struct node pointer and insert value at first
 struct node *insert_at_first(struct node *ptr)
 {
     int value;
     struct node *tmp = (struct node *)malloc(sizeof(struct node));
-    printf("Enter the value to insert");
+    printf("Enter the value to insert\n");
     scanf("%d", &value);
     if (tmp == NULL)
     {
@@ -24,11 +24,12 @@ struct node *insert_at_first(struct node *ptr)
         printf("Created \n");
         tmp->data = value;
         tmp->next = ptr;
+        ptr = tmp;
         return tmp;
     }
 }
 
-// this function take struct node pointer and insert at end
+// This function take struct node pointer and insert at end
 struct node *insert_at_end(struct node *ptr)
 {
     int value;
@@ -46,7 +47,7 @@ struct node *insert_at_end(struct node *ptr)
     printf("Node Inserted \n");
 }
 
-// this function take struct node pointer and display the linkedlist
+// This function take struct node pointer and display the linkedlist
 void display(struct node *ptr)
 {
     while (ptr != NULL)
@@ -57,26 +58,51 @@ void display(struct node *ptr)
     }
 }
 
-// this function take struct node pointer and find the given value and add value after given value
-void insert_after_value(struct node *ptr)
+// This function take struct node pointer and find the given value and add value after given value
+void insert_after_value(struct node *head)
 {
-    int val, value, flag = 0;
-    struct node *tmp = (struct node *)malloc(sizeof(struct node));
-    struct node *tp = (struct node *)malloc(sizeof(struct node));
-    printf("Enter the value to insert");
-    scanf("%d", &value);
-    printf("Enter the value  to add after\n");
-    scanf("%d", &val);
+    int val, match, flag = 0;
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
+    struct node *head2 = head;
+    printf("Enter the value of  node \n");
+    scanf("%d", &match);
 
-    while (ptr != NULL)
+    while (head != NULL)
     {
-        if (ptr->data == val)
+        if (head->data == match)
         {
-            flag = 1;
-            printf("%d\n", ptr->data);
-            break;
+            if (head->next == NULL)
+            {
+                char vbj;
+                printf("This value is found last of the list \n\tAre you insert at end (y\\n)\n");
+                scanf(" %c", &vbj);
+                if (vbj == 'y' || vbj == 'Y')
+                {
+                    insert_at_end(head2);
+                }
+                else if (vbj == 'n' || vbj == 'N')
+                {
+                    return;
+                }
+                else
+                {
+                    printf("Choose proper value\n");
+                }
+                flag = 1;
+            }
+            else
+            {
+
+                printf("Enter the value  to add  after\n");
+                scanf("%d", &val);
+                flag = 1;
+                temp->data = val;
+                temp->next = head->next;
+                head->next = temp;
+                break;
+            }
         }
-        ptr = ptr->next;
+        head = head->next;
     }
 
     if (flag == 0)
@@ -86,21 +112,77 @@ void insert_after_value(struct node *ptr)
     }
     else
     {
-        printf("Value  found \n");
+        printf("Value Inserted\n");
+    }
+}
+
+// This function take struct node pointer and insert before node
+struct node *insert_before_value(struct node *head)
+{
+    int match, val, flag = 0;
+    struct node *head2 = head;
+    printf("Enter the node value\n");
+    scanf("%d", &match);
+    char vkb;
+    if (head->data == match)
+    {
+
+        flag = 1;
+        printf("This value found on head  continue to add value before head to enter \n");
+        scanf(" %c", &vkb);
+        fflush(stdout);
+        fflush(stdin);
+        if (vkb == 'y' || vkb == 'Y')
+        {
+            head = insert_at_first(head);
+            return head2;
+        }
+        else if (vkb == 'n' || vkb == 'N')
+        {
+            return head2;
+        }
+        else
+        {
+            printf("Enter proper value\n");
+            return head2;
+        }
     }
 
-    tp = ptr->next;
-    tmp->data = value;
-    ptr->next = tmp;
-    tmp->next = tp;
-    printf("Inserted\n");
+    else
+    {
+        struct node *prev = head;
+
+        while (head->next != NULL)
+        {
+
+            if (head->data == match)
+            {
+                printf("Enter the value to insert \n");
+                scanf("%d", &val);
+                struct node *temp = (struct node *)malloc(sizeof(struct node));
+                temp->data = val;
+                temp->next = head;
+                prev->next = temp;
+                flag = 1;
+                break;
+            }
+            prev = head;
+            head = head->next;
+        }
+        if (flag)
+        {
+            printf("Value inserted\n");
+        }
+        else
+        {
+            printf("Value not found\n");
+        }
+    }
+
+    return head2;
 }
 
-void insert_before_value(struct node *ptr)
-{
-}
-
-// this function take struct node pointer and delete node at end
+// This function take struct node pointer and delete node at end
 struct node *delete_at_end(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -121,7 +203,31 @@ struct node *delete_at_end(struct node *ptr)
     printf("Delete at end\n");
 }
 
-// this function take struct node pointer and delete node at start(head)
+// This change the value already present in the node
+void change1(struct node *head)
+{
+    int match, val;
+    printf("Enter the node value \n");
+    scanf("%d", &match);
+    while (head->next != NULL)
+    {
+        if (head->data == match)
+        {
+            printf("Enter the value to change\n");
+            scanf("%d", &val);
+            head->data = val;
+            break;
+        }
+    }
+    if (head != NULL)
+    {
+        printf("Value change %d to %d\n", match, val);
+        return;
+    }
+    printf("value not found\n");
+}
+
+// This function take struct node pointer and delete node at start(head)
 struct node *delete_at_begin(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -162,7 +268,7 @@ void delete_after_value(struct node *ptr)
     free(q);
 }
 
-// this function take struct node pointer and delete node before given value
+// This function take struct node pointer and delete node before given value
 void delete_before_value(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -197,7 +303,7 @@ void delete_before_value(struct node *ptr)
     free(q);
 }
 
-// this function take struct node pointer and delete node at given value
+// This function take struct node pointer and delete node at given value
 void delete_at_value(struct node *ptr)
 {
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -231,6 +337,7 @@ void delete_at_value(struct node *ptr)
     p->next = q->next;
     free(q);
 }
+
 // struct node *insert(struct node *ptr)
 // {
 //     int ch;
@@ -253,6 +360,8 @@ void delete_at_value(struct node *ptr)
 //         break;
 //     }
 // }
+
+// Delete all linked list member;
 void deletell(struct node *ptr)
 {
     struct node *t = (struct node *)malloc(sizeof(struct node));
@@ -266,6 +375,26 @@ void deletell(struct node *ptr)
     }
     free(ptr);
 }
+
+// This functoion is sort all the node in increasing order
+void sort(struct node *head)
+{
+    struct node *ptr, *ptr2;
+    int temp;
+    for (ptr = head; ptr != NULL; (ptr) = ptr->next)
+    {
+        for (ptr2 = ptr->next; ptr2 != NULL; ptr2 = ptr2->next)
+        {
+            if (ptr->data > ptr2->data)
+            {
+                temp = ptr2->data;
+                ptr2->data = ptr->data;
+                ptr->data = temp;
+            }
+        }
+    }
+}
+
 int main()
 {
     // intilisilize section
@@ -278,14 +407,15 @@ int main()
     last->data = 2;
     last->next = NULL;
 
-    int c, i = 0, flag = 0, val;
+    int c, val, flag = 0;
     // here this loop repeat infinite and called all function perform according
     while (1)
     {
         fflush(stdin);
-        sleep(1);
         system("cls");
-        printf("%d\n", i++);
+        printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+        printf("                                         This is BHARGAV Program                                                |\n");
+        printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
         printf("\x1B[33m");
         printf("Enter the number to perform any operation\n");
         printf("\x1B[30m");
@@ -312,8 +442,12 @@ int main()
         printf("\t\t12:Delete Linkedlist\n");
         printf("\t\t13:Create Linkedlist\n");
         printf("\x1B[0m");
-        printf("\t14:EXIT\n");
-        printf("\n\n\t\t");
+        printf("\t14:Sort\n");
+        printf("\t15:EXIT\n");
+        printf("\n\t\t");
+        printf("\n\n\t\tEnter the choise\n\t\t");
+        // printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
+        // printf("\t\t");
         scanf("%d", &c);
 
         switch (c)
@@ -325,10 +459,10 @@ int main()
             insert_at_end(head);
             break;
         case 3:
-            // insert_at_value(head);
+            change1(head);
             break;
         case 4:
-            insert_before_value(head);
+            head = insert_before_value(head);
             break;
         case 5:
             insert_after_value(head);
@@ -349,15 +483,7 @@ int main()
             delete_before_value(head);
             break;
         case 11:
-            if (flag == 1)
-            {
-                printf("You deleted linkedlist\n");
-            }
-            else
-            {
-                display(head);
-            }
-
+            display(head);
             break;
         case 12:
             deletell(head);
@@ -367,12 +493,17 @@ int main()
             head->data = val;
             break;
         case 14:
+            sort(head);
+            break;
+        case 15:
             exit(1);
             break;
         default:
             printf("Enter proper value\n");
             break;
         }
+        printf("\n\t\t\tEnter the any key to continue\n\t\t\t");
+        scanf("%d");
     }
     return 0;
 }
