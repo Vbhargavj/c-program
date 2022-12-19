@@ -1,2 +1,1 @@
-p(infix);
-        print
+c(sizeof(char)*infix->size);

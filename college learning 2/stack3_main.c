@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include<stdlib.h>
 #include <string.h>
 
 struct stack
@@ -8,7 +8,6 @@ struct stack
     int top;
     char *arr;
 };
-
 // push element in the stack
 void push(struct stack *ptr, char c)
 {

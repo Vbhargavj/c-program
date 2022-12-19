@@ -98,7 +98,7 @@ int main()
         // printf("loop before :%c\n", c);
         if (c != '+' && c != '-' && c != '*' && c != '/')
         {
-            printf("in loop :%c\n", c);
+            printf("In Loop :%c\n", c);
             push(result, c);
         }
 
@@ -144,7 +144,7 @@ int main()
 
                 else
                 {
-                    printf("/t/t!!!!<<<<<<Something wrong>>>>>>!!!!!");
+                    printf("/t/t!!!!<<<<<<Something Wrong>>>>>>!!!!!");
                 }
             }
         }

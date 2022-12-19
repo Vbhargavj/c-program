@@ -21,7 +21,7 @@ void insert(struct queue ptr, int element)
     {
         printf("not insert\n");
     }
-    else if (ptr.size - 1 = > ptr.r)
+    else if (ptr.size - 1 >=  ptr.r)
     {
         ptr.r = -1;
     }

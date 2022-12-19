@@ -28,7 +28,7 @@ int main()
     char r[30], c;
     printf("Enter the expresion\n");
     scanf("%s", r);
-    for (int i = 0; i < strlen(r); i++)
+    for (int i = strlen(r); i > -1; i--)
     {
         push(s, r[i]);
     }
@@ -37,18 +37,23 @@ int main()
     for (int i = 0; i < strlen(r); i++)
     {
         c = pop(s);
-        printf("c=%c,an=%c\n", c, an);
         if (c == '(')
         {
-            if (an == '+' || an == '-' || an == '*' || an == '/')
-            {
-            }
-            else
+            if (i != 0 && an != '+' && an != '-' && an != '*' && an != '/')
             {
                 count = -1;
                 break;
             }
         }
+        else if (an == ')')
+        {
+            if (i != 0 && c != '+' && c != '-' && c != '*' && c != '/')
+            {
+                count = -1;
+                break;
+            }
+        }
+
         if (c == '(')
         {
             count++;
@@ -62,12 +67,12 @@ int main()
 
     if (count == 0)
     {
-        printf("Expresion is ok\n");
+        printf("Expresion Is Ok\n");
     }
 
     else
     {
-        printf("Expresion is wrong\n");
+        printf("Expresion Is Wrong\n");
     }
 
     return 0;
