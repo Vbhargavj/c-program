@@ -1,1 +1,2 @@
-c(sizeof(char)*infix->size);
+ge));
+    FILE *f = fopen("filesave.txt", "rb");

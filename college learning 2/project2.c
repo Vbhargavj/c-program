@@ -20,7 +20,12 @@ int main()
     {
         scanf("%s", s[i]);
     }
-
+    printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t |\n");
+    printf("\x1B[35m");
+    printf("|                                         VADUKAR BHARGAV JENTIBHAI                                              |\n");
+    printf("|                                     ENROLLMENT NUMBER : 210210116054                                           |\n");
+    printf("\x1B[0m");
+    printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
     printf("\n._._._.These are city name enter by user._._._.\n");
 
     // this loop is print input given by user

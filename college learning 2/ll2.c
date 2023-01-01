@@ -23,6 +23,7 @@ int is_empty(struct node *);
 int search(struct node *);
 void handle(struct node *);
 void change_value(struct node *);
+void insert_at_value(struct node *head);
 
 int main()
 {
@@ -65,6 +66,23 @@ struct node *insert_at_first(struct node *head)
     head->prev = temp;
     temp->prev = NULL;
     head = temp;
+}
+
+void insert_at_value(struct node *head)
+{
+    int val;
+    printf("Enter the value to search\n");
+    scanf("%d", &val);
+    while (head->next != NULL)
+    {
+        if (head->data == val)
+        {
+            printf("Enter the value to insert\n");
+            scanf("%d", &head->data);
+            break;
+        }
+        head = head->next;
+    }
 }
 
 void insert_at_end(struct node *head)
@@ -332,6 +350,12 @@ void handle(struct node *head)
         fflush(stdin);
         // sleep(1);
         system("cls");
+        printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t |\n");
+        printf("\x1B[35m");
+        printf("|                                         VADUKAR BHARGAV JENTIBHAI                                              |\n");
+        printf("|                                     ENROLLMENT NUMBER : 210210116054                                           |\n");
+        printf("\x1B[0m");
+        printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
         printf("\x1B[33m");
         printf("Enter the number to perform any operation\n");
         printf("\x1B[30m");
@@ -380,11 +404,6 @@ void handle(struct node *head)
             insert_after_value(head);
             break;
         case 6:
-            // if (is_empty(head->next))
-            // {
-            //     printf("list is underflow\n");
-            //     handle(head);
-            // }
             head = delete_at_begin(head);
             break;
         case 7:

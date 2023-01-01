@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 void renam1();
-void empty();
 void user();
 void add();
 void exi();
@@ -10,7 +9,8 @@ void display();
 void filesave();
 void view();
 void delet();
-void liveview();
+void update();
+void sort();
 void search();
 
 struct student
@@ -19,6 +19,7 @@ struct student
     char name[25], branch[15];
     float cpi;
 } std[5], temp;
+
 int i = 0;
 
 int main()
@@ -42,6 +43,7 @@ void display()
     printf("\t\t\t7 : SHORT THE STUDENT BY CPI\n");
     user();
 }
+
 void user()
 {
     int a;
@@ -51,34 +53,38 @@ void user()
     case 1:
         view();
         break;
+
     case 2:
         add();
         break;
+
     case 3:
-        // update();
+        update();
         break;
+
     case 4:
         delet();
-
-        // renam();
         break;
+
     case 5:
         search();
         break;
+
     case 6:
         exi();
         break;
+
     case 7:
-        // shor();
+        sort();
         break;
-    case 8:
-        // renam();
+   
     default:
         printf("Unknown command\n");
         display();
         break;
     }
 }
+
 void add()
 {
     fflush(stdin);
@@ -98,10 +104,13 @@ void add()
     printf("Enter student branch : ");
     scanf("%s", std[i].branch);
 
-    filesave();
-    i++;
+    FILE *f = fopen("filesave.txt", "a");
+    fprintf(f, "%s %lld %lld %s %0.2f\n", std[i].name, std[i].eno, std[i].mo, std[i].branch, std[i].cpi);
+    printf("DATA SUCESSFULLY STORE IN FILE \n");
+    fclose(f);
     display();
 }
+
 void filesave()
 {
     FILE *f = fopen("filesave.txt", "a");
@@ -109,11 +118,13 @@ void filesave()
     printf("DATA SUCESSFULLY STORE IN FILE \n");
     fclose(f);
 }
+
 void exi()
 {
     exit(0);
 }
 int flag = 0, sflag = 0;
+
 void view()
 {
     FILE *fp = fopen("filesave.txt", "r");
@@ -124,21 +135,15 @@ void view()
         // fscanf(fp, "%s %lld %lld %s %f\n", temp.name, &temp.eno, &temp.mo, temp.branch, &temp.cpi);
         printf("%s %lld %lld %s %0.2f\n", temp.name, temp.eno, temp.mo, temp.branch, temp.cpi);
     }
-    for (int j = 0; j < i; j++)
-    {
-        flag = 1;
-        printf("%s %lld %lld %s %0.2f\n", std[j].name, std[j].eno, std[j].mo, std[j].branch, std[j].cpi);
-    }
-    if (flag == 0)
-    {
-        printf("file is empty\n");
-    }
+
     fclose(fp);
     fflush(stdin);
     display();
 }
-// this function is use to search student in file and current structure
+
 long long int buf;
+
+// this function is use to search student in file and current structure
 void search()
 {
     FILE *fp = fopen("filesave.txt", "r");
@@ -158,15 +163,6 @@ void search()
             break;
         }
     }
-    // this loop is use to search student in current structure
-    for (int j = 0; j < i; j++)
-    {
-        if (buf == std[j].eno)
-        {
-            sflag = 1;
-            printf("%s %lld %lld %s %0.2f\n", std[j].name, std[j].eno, std[j].mo, std[j].branch, std[j].cpi);
-        }
-    }
     // when data not found in file and structure below code execute
     if (sflag == 0)
     {
@@ -175,6 +171,7 @@ void search()
     fclose(fp);
     display();
 }
+
 void delet()
 {
     fflush(stdout);
@@ -189,15 +186,111 @@ void delet()
 
     while (fscanf(fp, "%s %lld %lld %s %f\n", temp.name, &temp.eno, &temp.mo, temp.branch, &temp.cpi) != EOF)
     {
+
         if (buf == temp.eno)
         {
-            printf("\nyes\n");
+            printf("\nDeleting\n");
         }
         else
         {
+
             sflag = 1;
             // printf("You are searching this student\n");
             printf("%s %lld %lld %s %0.2f\n", temp.name, temp.eno, temp.mo, temp.branch, temp.cpi);
+            fprintf(f, "%s %lld %lld %s %f\n", temp.name, temp.eno, temp.mo, temp.branch, temp.cpi);
+        }
+    }
+
+    // when data not found in file and structure below code execute
+    fclose(fp);
+    fclose(f);
+    renam1();
+    if (sflag == 0)
+    {
+        printf("Data was not found in the record\n");
+        display();
+    }
+    else
+    {
+        display();
+    }
+}
+
+void renam1()
+{
+    remove("filesave.txt");
+    printf("\nYes i am calling now\n");
+    rename("temp.txt", "filesave.txt");
+}
+
+void update()
+{
+    fflush(stdout);
+    printf("Enter the enrollment number of student to delete\n");
+    scanf("%lld", &buf);
+    FILE *fp = fopen("filesave.txt", "r");
+    FILE *f = fopen("temp.txt", "w");
+    printf("searching...\n");
+    sleep(1);
+    system("cls");
+
+    // this loop is use to search studet in file
+    while (fscanf(fp, "%s %lld %lld %s %f\n", temp.name, &temp.eno, &temp.mo, temp.branch, &temp.cpi) != EOF)
+    {
+        if (buf == temp.eno)
+        {
+            int c;
+            while (1)
+            {
+                printf("%s %lld %lld %s %0.2f\n", temp.name, temp.eno, temp.mo, temp.branch, temp.cpi);
+
+                printf("\n\nChoose the field that update for student \n");
+                printf("1:Name\n");
+                printf("2:Enrollment number\n");
+                printf("3:Student mobile number\n");
+                printf("4:Student branch\n");
+                printf("5:Student cpi\n");
+                printf("6:Exit\n");
+                scanf("%d", &c);
+
+                if (c == 6)
+                {
+                    break;
+                }
+
+                switch (c)
+                {
+                case 1:
+                    printf("Enter the student's name\n");
+                    scanf("%s", temp.name);
+                    break;
+                case 2:
+                    printf("Enter the student's Enrollment number\n");
+                    scanf("%lld", &temp.eno);
+                    break;
+                case 3:
+                    printf("Enter the student's mobile number\n");
+                    scanf("%lld", &temp.mo);
+                    break;
+                case 4:
+                    printf("Enter the student's branch\n");
+                    scanf("%s", temp.branch);
+                    break;
+                case 5:
+                    printf("Enter the student's cpi\n");
+                    scanf("%f", &temp.cpi);
+                    break;
+                default:
+                    printf("Choose aproprite option\n");
+                    break;
+                }
+            }
+            fprintf(f, "%s %lld %lld %s %f\n", temp.name, temp.eno, temp.mo, temp.branch, temp.cpi);
+        }
+        else
+        {
+
+            sflag = 1;
             fprintf(f, "%s %lld %lld %s %f\n", temp.name, temp.eno, temp.mo, temp.branch, temp.cpi);
         }
     }
@@ -218,10 +311,40 @@ void delet()
         display();
     }
 }
-void renam1()
-{
 
-    remove("filesave.txt");
-    printf("\nYes i am calling now\n");
-    rename("temp.txt", "filesave.txt");
+void sort()
+{
+    int count = 0;
+    FILE *fp = fopen("filesave.txt", "r");
+    printf("Sorting\n");
+    while (fscanf(fp, "%s %lld %lld %s %f\n", temp.name, &temp.eno, &temp.mo, temp.branch, &temp.cpi) != EOF)
+    {
+        count++;
+        sflag = 1;
+    }
+    rewind(fp);
+    struct student s[count], tmp;
+    for (int k = 0; k < count; k++)
+    {
+        fscanf(fp, "%s %lld %lld %s %f\n", s[k].name, &s[k].eno, &s[k].mo, s[k].branch, &s[k].cpi);
+    }
+
+    for (int k = 0; k < count; k++)
+    {
+        for (int l = k + 1; l < count; l++)
+        {
+            if (s[k].cpi < s[l].cpi)
+            {
+                tmp = s[k];
+                s[k] = s[l];
+                s[l] = tmp;
+            }
+        }
+    }
+    fclose(fp);
+    for (int k = 0; k < count; k++)
+    {
+        printf("%s %lld %lld %s %0.2f\n", s[k].name, s[k].eno, s[k].mo, s[k].branch, s[k].cpi);
+    }
+    display();
 }

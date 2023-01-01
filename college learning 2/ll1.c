@@ -126,7 +126,6 @@ struct node *insert_before_value(struct node *head)
     char vkb;
     if (head->data == match)
     {
-
         flag = 1;
         printf("This value found on head  continue to add value before head to enter \n");
         scanf(" %c", &vkb);
@@ -181,7 +180,6 @@ struct node *insert_before_value(struct node *head)
 
     return head2;
 }
-
 // This function take struct node pointer and delete node at end
 struct node *delete_at_end(struct node *ptr)
 {
@@ -202,7 +200,6 @@ struct node *delete_at_end(struct node *ptr)
 
     printf("Delete at end\n");
 }
-
 // This change the value already present in the node
 void change1(struct node *head)
 {
@@ -226,7 +223,6 @@ void change1(struct node *head)
     }
     printf("value not found\n");
 }
-
 // This function take struct node pointer and delete node at start(head)
 struct node *delete_at_begin(struct node *ptr)
 {
@@ -236,7 +232,6 @@ struct node *delete_at_begin(struct node *ptr)
     printf("Delete at beign\n");
     return p;
 }
-
 // this function take struct node pointer and delete node after given value
 void delete_after_value(struct node *ptr)
 {
@@ -267,7 +262,6 @@ void delete_after_value(struct node *ptr)
     p->next = q->next;
     free(q);
 }
-
 // This function take struct node pointer and delete node before given value
 void delete_before_value(struct node *ptr)
 {
@@ -302,7 +296,6 @@ void delete_before_value(struct node *ptr)
     p->next = q->next;
     free(q);
 }
-
 // This function take struct node pointer and delete node at given value
 void delete_at_value(struct node *ptr)
 {
@@ -337,30 +330,6 @@ void delete_at_value(struct node *ptr)
     p->next = q->next;
     free(q);
 }
-
-// struct node *insert(struct node *ptr)
-// {
-//     int ch;
-//     printf("Choose operation to perform \n");
-//     printf("\t1:insert at begin\n");
-//     printf("\t2:insert at end\n");
-//     printf("\t3:insert at given value\n");
-//     printf("\t4:insert before value\n");
-//     printf("\t5:insert after given value\n");
-//     scanf("%d", &ch);
-//     switch (ch)
-//     {
-//     case 1:
-//         return insert_at_first(ptr);
-//         break;
-//     case 2:
-//         insert_at_end(ptr);
-//         break;
-//     default:
-//         break;
-//     }
-// }
-
 // Delete all linked list member;
 void deletell(struct node *ptr)
 {
@@ -413,9 +382,13 @@ int main()
     {
         fflush(stdin);
         system("cls");
-        printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-        printf("                                         This is BHARGAV Program                                                |\n");
-        printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
+
+        printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t |\n");
+        printf("\x1B[35m");
+        printf("|                                         VADUKAR BHARGAV JENTIBHAI                                              |\n");
+        printf("|                                     ENROLLMENT NUMBER : 210210116054                                           |\n");
+        printf("\x1B[0m");
+        printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
         printf("\x1B[33m");
         printf("Enter the number to perform any operation\n");
         printf("\x1B[30m");
@@ -444,9 +417,9 @@ int main()
         printf("\x1B[0m");
         printf("\t14:Sort\n");
         printf("\t15:EXIT\n");
+        printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._\n\n");
         printf("\n\t\t");
         printf("\n\n\t\tEnter the choise\n\t\t");
-        // printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
         // printf("\t\t");
         scanf("%d", &c);
 
