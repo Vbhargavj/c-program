@@ -24,6 +24,8 @@ int i = 0;
 
 int main()
 {
+    printf("\nVADUKAR BHARGAV JENTIBHAI\n");
+    printf("ENROLLMENT NUMBER: 210210116054\n");
     display();
 
     return 0;
@@ -33,6 +35,7 @@ void display()
 {
     fflush(stdin);
     fflush(stdout);
+    
     printf("\n\t-.-.-.Select option to perform an operation.-.-.-.-\n");
     printf("\t\t\t1 : VIEW \n");
     printf("\t\t\t2 : ADD \n");
@@ -180,8 +183,8 @@ void delet()
     FILE *fp = fopen("filesave.txt", "r");
     FILE *f = fopen("temp.txt", "w");
     printf("searching...\n");
-    sleep(1);
-    system("cls");
+    // sleep(1);
+    // system("cls");
     // this loop is use to search studet in file
 
     while (fscanf(fp, "%s %lld %lld %s %f\n", temp.name, &temp.eno, &temp.mo, temp.branch, &temp.cpi) != EOF)

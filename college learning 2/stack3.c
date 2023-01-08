@@ -27,7 +27,7 @@ void display(struct stack *ptr)
     int p = ptr->top;
     for (int i = 0; i <= p; i++)
     {
-        printf("%c\n", ptr->arr[i]);
+        printf("%c ", ptr->arr[i]);
     }
 }
 
@@ -98,7 +98,7 @@ int main()
         // printf("loop before :%c\n", c);
         if (c != '+' && c != '-' && c != '*' && c != '/')
         {
-            printf("In Loop :%c\n", c);
+            // printf("In Loop :%c\n", c);
             push(result, c);
         }
 

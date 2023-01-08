@@ -65,7 +65,7 @@ int delete(struct queue *q)
 
 void display(struct queue *q)
 {
-    if (isempty(q))
+    if (isEmpty(q))
     {
         printf("Queue is empty\n");
     }
@@ -89,12 +89,14 @@ int main()
     while (1)
     {
         system("cls");
-        printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t |\n");
-        printf("\x1B[35m");
-        printf("|                                         VADUKAR BHARGAV JENTIBHAI                                              |\n");
-        printf("|                                     ENROLLMENT NUMBER : 210210116054                                           |\n");
-        printf("\x1B[0m");
-        printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
+        printf("\nBHARGAV JENTIBHAI VADUKAR\n");
+        printf("ENROLLMENT NO : 210210116054\n");
+        // printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t |\n");
+        // printf("\x1B[35m");
+        // printf("|                                         VADUKAR BHARGAV JENTIBHAI                                              |\n");
+        // printf("|                                     ENROLLMENT NUMBER : 210210116054                                           |\n");
+        // printf("\x1B[0m");
+        // printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n\n");
         printf("Choose option to perform operation\n");
         printf("1:Insert\n");
         printf("2:Delete\n");

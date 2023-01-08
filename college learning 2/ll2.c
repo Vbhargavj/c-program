@@ -349,7 +349,7 @@ void handle(struct node *head)
         int c, flag;
         fflush(stdin);
         // sleep(1);
-        system("cls");
+        // system("cls");
         printf("|_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t |\n");
         printf("\x1B[35m");
         printf("|                                         VADUKAR BHARGAV JENTIBHAI                                              |\n");
@@ -445,6 +445,5 @@ void handle(struct node *head)
             sleep(3);
             break;
         }
-        sleep(3);
     }
 }

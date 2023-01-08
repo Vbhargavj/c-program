@@ -55,6 +55,7 @@ void insert(struct queue *q)
             q->ary[q->r] = val;
         }
     }
+    printf("Inserted Successfully\n");
 }
 
 void delet(struct queue *q)
@@ -74,11 +75,12 @@ void delet(struct queue *q)
             q->f++;
         }
     }
+    printf("Deleted Successfully\n");
 }
 void display(struct queue *q){
     for (int i = 0; i < q->size; i++)
     {
-        printf("%d", q->ary[i]);
+        printf("%d\n", q->ary[i]);
     }
     
 }
@@ -90,6 +92,8 @@ int main()
     q->size=4;
     q->ary = (int *)malloc(q->size * sizeof(int));
     int v;
+    printf("\nBHARGAV JENTIBHAI VADUKAR\n");
+    printf("ENROLLMENT NO : 210210116054\n");
     while (1)
     {
         printf("1: insert\n");
