@@ -66,7 +66,7 @@ struct node *insert(struct node *root, int val)
     {
         printf("I am less than\n");
         root->right = insert(root->right, val);
-    }
+    }k
 
     else if (root->data < val)
     {

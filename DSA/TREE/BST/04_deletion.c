@@ -32,6 +32,7 @@ void InOrder(struct node *root)
     }
 }
 
+// using recursion
 struct node *deletion(struct node *root, int val)
 {
 
@@ -40,17 +41,7 @@ struct node *deletion(struct node *root, int val)
         return NULL;
     }
 
-    else if (root->data == val)
-    {
-        if (root->left == NULL && root->right == NULL)
-        {
-            struct node *temp = root;
-            free(temp);
-            return NULL;
-        }
-    }
-
-    else if (root->data > val)
+    if (root->data > val)
     {
         root->left = deletion(root->left, val);
     }
@@ -58,6 +49,87 @@ struct node *deletion(struct node *root, int val)
     else if (root->data < val)
     {
         root->right = deletion(root->right, val);
+    }
+    else
+    {
+        // node have no child
+        if (root->left == NULL && root->right == NULL)
+        {
+            struct node *temp = root;
+            free(temp);
+            return NULL;
+        }
+
+        // node have one child
+        else if (root->left == NULL || root->right == NULL)
+        {
+            if (root->left == NULL)
+            {
+                struct node *temp = root;
+                free(temp);
+                return root->right;
+            }
+            else
+            {
+                struct node *temp = root;
+                free(temp);
+                return root->left;
+            }
+        }
+
+        // node have two child
+        else if (root->left != NULL && root->right != NULL)
+        {
+            // printf("\n%d\n", root->data);
+            // struct node *tmp = root;
+            // while (tmp->right != NULL)
+            // {
+            //     tmp = tmp->right;
+            //     printf("\ntemp data %d\n", tmp->data);
+            // }
+            // printf("\ntemp data %d\n", tmp->data);
+            // struct node *temp = tmp;
+            // root->data = tmp->data;
+            // printf("\n%d\n", root->data);
+
+            // return deletion(root->right, tmp->data);
+            struct node *temp = root->left;
+            while (temp->right != NULL)
+            {
+                temp = temp->right;
+            }
+            root->data = temp->data;
+            root->left = deletion(root->left, temp->data);
+        }
+        return root;
+    }
+    // return root;
+}
+
+struct node *insert(struct node *root, int val)
+{
+    if (root == NULL)
+    {
+        struct node *temp = createnode(val);
+        return temp;
+    }
+
+    else if (root->data == val)
+    {
+        printf("Data already inserted\n");
+        return root;
+    }
+
+    else if (root->data > val)
+    {
+        printf("I am  greater than\n");
+        root->left = insert(root->left, val);
+    }
+
+    else if (root->data < val)
+    {
+        printf("I am less than\n");
+        root->right = insert(root->right, val);
     }
 }
 
@@ -75,7 +147,8 @@ int main()
     r1->right = r4;
 
     InOrder(root);
-    deletion(root, 7);
+    // deletion(root, 6);
+    insert(root, 12);
     printf("\n");
     InOrder(root);
     return 0;
