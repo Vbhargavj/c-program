@@ -38,7 +38,7 @@ int priority(char t, char l)
     {
         return 1;
     }
-    if (t=='+'&& t=='')
+    if (t=='+'&& t=='-')
     {
         /* code */
     }
