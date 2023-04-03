@@ -35,11 +35,11 @@ here tree is
 */
 int main()
 {
-    struct node *p = createnode(4);
-    struct node *p1 = createnode(2);
+    struct node *p = createnode(20);
+    struct node *p1 = createnode(10);
     struct node *p2 = createnode(42);
     struct node *p3 = createnode(5);
-    struct node *p4 = createnode(6);
+    struct node *p4 = createnode(11);
 
     // join node
     p->left = p1;
