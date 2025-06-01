@@ -89,7 +89,6 @@ int main()
         {
             printf("%c", c);
         }
-
         else if (c == '(')
         {
             push(prefix, c);
@@ -104,7 +103,7 @@ int main()
         }
         else
         {
-            if (priority(peek(prefix))>=priority(c))
+            if (priority(peek(prefix)) >= priority(c))
             {
                 printf("%c", pop(prefix));
             }
@@ -113,10 +112,10 @@ int main()
         i++;
         c = exp[i];
     }
-    while (prefix->top!=-1)
+    while (prefix->top != -1)
     {
         printf("%c", pop(prefix));
     }
-    
+
     return 0;
 }

@@ -421,7 +421,7 @@ int main()
         printf("\t15:EXIT\n");
         printf("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._\n\n");
         printf("\n\t\t");
-        printf("\n\n\t\tEnter the choise\n\t\t");
+        printf("\n\n\t\tEnter the choice\n\t\t");
         // printf("\t\t");
         scanf("%d", &c);
 
